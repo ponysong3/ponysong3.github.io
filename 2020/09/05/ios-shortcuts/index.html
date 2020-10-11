@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="iOS快捷指令类似编程语言，它的组成包括：基本语法元素（变量、文本、数字、词典、列表）、内部函数（iOS的功能操作）、外部接口（一般为webAPI）。这些组成部分就像一台“机器”的“连接器”和“零部件”，而“组装”这台“机器”很简单，“组装”顺序为：输入–处理–输出。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS快捷指令：像编程一样玩转手机">
+<meta property="og:url" content="https://ponysong3.top/2020/09/05/ios-shortcuts/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="iOS快捷指令类似编程语言，它的组成包括：基本语法元素（变量、文本、数字、词典、列表）、内部函数（iOS的功能操作）、外部接口（一般为webAPI）。这些组成部分就像一台“机器”的“连接器”和“零部件”，而“组装”这台“机器”很简单，“组装”顺序为：输入–处理–输出。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ponysong3.top/images/all-news.JPG">
+<meta property="og:image" content="https://ponysong3.top/images/ios-shortcuts.jpg">
+<meta property="article:published_time" content="2020-09-05T14:02:13.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:05:40.588Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="快捷指令">
+<meta property="article:tag" content="shortcuts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ponysong3.top/images/all-news.JPG">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/09/05/ios-shortcuts/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>iOS快捷指令：像编程一样玩转手机 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AB%E4%BA%BA%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text"> 别人的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text"> 你的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%99%E5%9C%A8%E5%B7%A8%E4%BA%BA%E7%9A%84%E8%82%A9%E8%86%80%E4%B8%8A"><span class="nav-number">4.</span> <span class="nav-text"> 站在巨人的肩膀上</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/09/05/ios-shortcuts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS快捷指令：像编程一样玩转手机
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-05 22:02:13" itemprop="dateCreated datePublished" datetime="2020-09-05T22:02:13+08:00">2020-09-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:05:40" itemprop="dateModified" datetime="2020-10-12T03:05:40+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>iOS快捷指令类似编程语言，它的组成包括：基本语法元素（变量、文本、数字、词典、列表）、内部函数（iOS的功能操作）、外部接口（一般为webAPI）。这些组成部分就像一台“机器”的“连接器”和“零部件”，而“组装”这台“机器”很简单，“组装”顺序为：输入–处理–输出。</p>
+<a id="more"></a>
+<h3 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h3>
+<p>A shortcut provides a quick way to get things done with your apps, with just a tap or by asking Siri. 这是苹果官网给快捷指令的定义，也就是说你可以一键或者呼唤Siri帮你做一系列的事情。设想一下，你每天都想利用有限的时间浏览最热门的事件或新闻，你会怎么做？</p>
+<p>你会打开今日头条、微博、公众号、知乎、网易新闻……很显然，我们不想把宝贵的时间付诸在如此纷繁的APP上，我们也不想下载这么多的APP。如果有一个程序可以搜刮各个网站或APP上的热点资讯并且统一呈现到我们面前，而且这个程序无毒无害无广告天然简洁，最好就是肉眼可见的几条指令，那是多么美好和良心的事情啊！很遗憾，这样的程序少之又少，这就逼着大家学点编程，自己写个程序从而为自己的工作生活减少一点重复活动。于是，iOS上提供了快捷指令，让你在手机上编程，从而减少在手机上的重复活动。</p>
+<p>来看一下全网热点一键呈现的效果，手机上只要有浏览器和快捷指令就能看到这个效果</p>
+<img src="/images/all-news.JPG" alt="all-news" style="zoom:25%;" />
+<h3 id="别人的指令"><a class="markdownIt-Anchor" href="#别人的指令"></a> 别人的指令</h3>
+<p>想必你已经了解了快捷指令的效能，你迫不及待地想要知道快捷指令还能帮你做哪些其他的事情，下面的网站也许能帮你打开一扇窗</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT208309">如何开始快捷指令</a></li>
+<li><a target="_blank" rel="noopener" href="https://sharecuts.cn/">捷径社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://jiejingku.net/">捷径库</a></li>
+<li><a target="_blank" rel="noopener" href="https://jiejinghe.com/">捷径盒</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rcuts.com/">快捷指令库</a></li>
+</ul>
+<h3 id="你的指令"><a class="markdownIt-Anchor" href="#你的指令"></a> 你的指令</h3>
+<p>不甘平庸的你，有必要自己设计一个快捷指令，因为自己设计的快捷指令即安全又符合自己需要</p>
+<p>前面说到，快捷指令就像一门编程语言，只不过它更简单，可以像“堆积木”一样设计一个程序。为了便于掌握，我们把所有的程序都分为三部分，分别是：输入、处理、输出。拆解来看：</p>
+<ul>
+<li>输入：可以是Siri语音、文本、手动选择</li>
+<li>处理：我们可以把任何不可见的操作纳入处理部分，如选取词典条目、判断条件、命名变量、编辑文本等</li>
+<li>输出：肉眼可见的，以及我们最终目标都算作输出，比如：提示、系统设定、存储文件、web呈现、调用app等</li>
+</ul>
+<p>当然，这三部分只是一家之言，如果比较费解，大可以略过，直接看下面的具体操作</p>
+<p>我们设定一个需求，然后根据这个需求来设计快捷指令。需求是：每当工作累了，呼唤Siri“休息片刻”，然后手机帮我们设定休息的时长，到点闹钟提醒，休息期间播放喜欢的音乐。具体实现起来就是下面的样子</p>
+<img src="/images/ios-shortcuts.jpg" alt="ios-shortcuts" style="zoom:33%;" />
+<h3 id="站在巨人的肩膀上"><a class="markdownIt-Anchor" href="#站在巨人的肩膀上"></a> 站在巨人的肩膀上</h3>
+<p>上面的操作可能只是蜻蜓点水，让人入了门却又不知道如何走下去，总感觉缺点什么。的确，上面操作中调用的“外部快捷指令”是什么？别人已经写好的快捷指令。别人写的快捷指令为什么那么高级那么复杂？因为他们用到了Web API</p>
+<p>Web API是什么呢？推荐看下面的文章<br />
+<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/28557115">怎样用通俗的语言解释REST，以及RESTful？</a></p>
+<p>而上面操作中调用的“外部快捷指令”就用到了Spotify(一款音乐软件)提供给我们的Web API，关于这个API的用法可以详细研究下面的信息<br />
+<a target="_blank" rel="noopener" href="https://developer.spotify.com/documentation/general/guides/content-linking-guide/">Content Linking Guide in Spotify</a><br />
+<a target="_blank" rel="noopener" href="https://developer.spotify.com/console/get-playlists/?user_id=b5br2wdkp4do88sthrbxt0a97&amp;limit=&amp;offset=">Get a List of a User’s Playlists</a><br />
+<a target="_blank" rel="noopener" href="https://developer.spotify.com/documentation/web-api/">Web API of spotify</a></p>
+<p>(全文完)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/09/05/ios-shortcuts/" title="iOS快捷指令：像编程一样玩转手机">https://ponysong3.top/2020/09/05/ios-shortcuts/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/" rel="tag"># 快捷指令</a>
+              <a href="/tags/shortcuts/" rel="tag"># shortcuts</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/08/20/SQL-image/" rel="prev" title="Image写入数据库并展示到报表">
+                  <i class="fa fa-chevron-left"></i> Image写入数据库并展示到报表
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

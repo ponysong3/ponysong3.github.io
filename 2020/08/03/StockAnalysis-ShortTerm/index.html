@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="股市有风险，投机需谨慎。股市里有两大门派，分别是“价值投资”和“短线投机”，这两大门派的价值观迥异，甚至还会相互瞧不起，因为他们都有一套独门秘籍，都奢望在鱼龙混杂的市场里捉一条“大鱼”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="股价短线分析">
+<meta property="og:url" content="https://ponysong3.top/2020/08/03/StockAnalysis-ShortTerm/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="股市有风险，投机需谨慎。股市里有两大门派，分别是“价值投资”和“短线投机”，这两大门派的价值观迥异，甚至还会相互瞧不起，因为他们都有一套独门秘籍，都奢望在鱼龙混杂的市场里捉一条“大鱼”。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-03T13:58:12.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:05:38.772Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="股票">
+<meta property="article:tag" content="K线">
+<meta property="article:tag" content="短期">
+<meta property="article:tag" content="均线">
+<meta property="article:tag" content="BOLL">
+<meta property="article:tag" content="成交量">
+<meta property="article:tag" content="成交额">
+<meta property="article:tag" content="MACD">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/08/03/StockAnalysis-ShortTerm/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>股价短线分析 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%B5%E8%80%81%E5%93%A5%E5%85%B6%E4%BA%BA"><span class="nav-number">1.</span> <span class="nav-text"> 赵老哥其人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text"> 技术指标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%87%E7%BA%BF"><span class="nav-number">2.1.</span> <span class="nav-text"> 均线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E6%9E%97%E7%BA%BF"><span class="nav-number">2.2.</span> <span class="nav-text"> 布林线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E4%BA%A4%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text"> 成交量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#macd"><span class="nav-number">2.4.</span> <span class="nav-text"> MACD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AD%A6%E9%86%92"><span class="nav-number">3.</span> <span class="nav-text"> 警醒</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/08/03/StockAnalysis-ShortTerm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          股价短线分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-08-03 21:58:12" itemprop="dateCreated datePublished" datetime="2020-08-03T21:58:12+08:00">2020-08-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:05:38" itemprop="dateModified" datetime="2020-10-12T03:05:38+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%82%A1%E7%A5%A8/" itemprop="url" rel="index"><span itemprop="name">股票</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>股市有风险，投机需谨慎。股市里有两大门派，分别是“价值投资”和“短线投机”，这两大门派的价值观迥异，甚至还会相互瞧不起，因为他们都有一套独门秘籍，都奢望在鱼龙混杂的市场里捉一条“大鱼”。</p>
+<a id="more"></a>
+<p>客观来讲，“价值投资”更加政治正确一点，但由于人性的略根性和见识的局限性，多数人难得此真传。“短线投机”则容易操弄的多，它可以满足人们贪婪、速成、投机的欲望，而且这一“门派”对任何人来者不拒，所以“门徒”的水平良莠不齐，颇像江湖上的“丐帮”，只要你衣衫褴褛、手持破碗便有了入场的资格。但“短线投机”门派也有一波高人，可以“观星象卜未来”，高人的这般武艺也是需要专门学习的，所以高人更倾向于我们叫他们“技术流”。这篇文章就打算窥视一下“短线投机”的高人们的技术要领。</p>
+<h3 id="赵老哥其人"><a class="markdownIt-Anchor" href="#赵老哥其人"></a> 赵老哥其人</h3>
+<p>每个江湖里面都有一些传奇，股市里也不列外，赵老哥便是其中一位。号称A股顶级游资，10万本金入市，8年一万倍。更多的细节可以上网去查，权当八卦看看，这里不再赘述。这里引出赵老哥是因为希望学习高人本领，而最近赵老哥出现在了小红书上，不知此人是真是假，抱着空杯心态，宁可信其为真。他在小红书分享了一段短线操作原则，全文如下：</p>
+<p><strong>大原则</strong></p>
+<ul>
+<li>盈利卖出的操作永远都是正确的</li>
+<li>通常次日冲高止盈，持股时间最长不超过三天</li>
+<li>次日走势不及预期，随时止损出局</li>
+</ul>
+<p><strong>小原则</strong></p>
+<ul>
+<li>开盘后股价在均线黄线上持续运行可持股待涨</li>
+<li>股价一波大幅冲高后，二次冲高不及前高可止盈</li>
+<li>盘中股价冲高回落击破均线黄线，反抽不上止盈</li>
+<li>开盘半小时内股价持续在均线黄线下运行，反抽不上卖出</li>
+<li>短线亏损5%无条件止损出局</li>
+</ul>
+<h3 id="技术指标"><a class="markdownIt-Anchor" href="#技术指标"></a> 技术指标</h3>
+<p>高人的心得也是通过技术操盘锤炼出来的，要想领会还需要我们熟悉技术指标，结合高人的心得践行。技术指标有很多，他们甚至出了很多书讲K线、指标，我们简单的了解几个罢了，保证盘面的数字能看懂就好。</p>
+<h4 id="均线"><a class="markdownIt-Anchor" href="#均线"></a> 均线</h4>
+<p>均线又叫移动均线（Moving Average），简称MA，是将某一段时间内的收盘价之和算术平均后连线。比如，MA5即5日均线，就是5天内的收盘价之和取算数平均后连线。</p>
+<p><strong>用法</strong></p>
+<ol>
+<li>上涨行情初期，股价在移动平均线上方运行，短期移动平均线上穿中长期移动平均线，形成黄金交叉，为买入信号；</li>
+<li>下跌行情初期，股价在移动平均线下方运行，短期移动平均线下穿中长期移动平均线，形成死亡交叉，为卖出信号；</li>
+<li>在下跌行情中，股价在移动平均线下方运行，反弹时未突破移动平均线，且移动平均线跌势减缓，趋于水平后又出现下跌趋势，为卖出信号；</li>
+<li>在上涨行情中，5日、10日、20日等移动均线从上而下依次顺序排列，向右上方移动，称为空头排列，预示股价将大幅上涨；</li>
+<li>在下跌行情中，5日、10日、20日等移动均线自下而上依次顺序排列，向右下方移动，称为空头排列，预示股价将大幅下跌；</li>
+<li>在上涨行情中，股价位于移动均线之上，走多头排列的移动均线可视为多方的防线，具有助涨作用；</li>
+<li>在下跌行情中，股价位于移动均线下方，呈空头排列的移动均线可视为空方的防线，具有助跌作用；</li>
+<li>股价位于移动均线之上运行，数日大涨，离移动均线太远，有可能回踩均线；</li>
+<li>股价位于移动均线以下运行，突然暴跌，离移动均线太远，有可能回抽均线；</li>
+<li>移动均线从上升逐渐走平，而股价从移动平均线上方向下跌破移动平均线时说明卖压渐重，为卖出信号</li>
+</ol>
+<h4 id="布林线"><a class="markdownIt-Anchor" href="#布林线"></a> 布林线</h4>
+<p>布林线BOLL(N,k)是指N日的移动均线值分别加上和减去k倍的股价“标准差”，从而求得股价的“信赖区间”。详细计算公式为，其中C为收盘价：</p>
+<p>中轨线MA</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mo stretchy="false">(</mo><mi>C</mi><mo>−</mo><mi>M</mi><mi>A</mi><mo stretchy="false">)</mo></mrow><mi>N</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sum_{i=1}^N (C-MA)}{N}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.356941em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.670941em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.6897100000000003em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>上轨线UP</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mi>P</mi><mo>=</mo><mi>M</mi><mi>A</mi><mo>+</mo><mi>k</mi><msqrt><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mo stretchy="false">(</mo><mi>C</mi><mo>−</mo><mi>M</mi><mi>A</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mi>N</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">UP=MA+k \sqrt{\frac{\sum_{i=1}^N (C-MA)^2}{N}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.04em;vertical-align:-0.9136544999999998em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1263455em;"><span class="svg-align" style="top:-5em;"><span class="pstrut" style="height:5em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.670941em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.6897100000000003em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-4.0863455em;"><span class="pstrut" style="height:5em;"></span><span class="hide-tail" style="min-width:1.02em;height:3.08em;"><svg width='400em' height='3.08em' viewBox='0 0 400000 3240' preserveAspectRatio='xMinYMin slice'><path d='M473,2793c339.3,-1799.3,509.3,-2700,510,-2702
+c3.3,-7.3,9.3,-11,18,-11H400000v40H1017.7s-90.5,478,-276.2,1466c-185.7,988,
+-279.5,1483,-281.5,1485c-2,6,-10,9,-24,9c-8,0,-12,-0.7,-12,-2c0,-1.3,-5.3,-32,
+-16,-92c-50.7,-293.3,-119.7,-693.3,-207,-1200c0,-1.3,-5.3,8.7,-16,30c-10.7,
+21.3,-21.3,42.7,-32,64s-16,33,-16,33s-26,-26,-26,-26s76,-153,76,-153s77,-151,
+77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,104,606z
+M1001 80H400000v40H1017z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9136544999999998em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>下轨线</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mi>P</mi><mo>=</mo><mi>M</mi><mi>A</mi><mo>−</mo><mi>k</mi><msqrt><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mo stretchy="false">(</mo><mi>C</mi><mo>−</mo><mi>M</mi><mi>A</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mi>N</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">UP=MA - k \sqrt{\frac{\sum_{i=1}^N (C-MA)^2}{N}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.04em;vertical-align:-0.9136544999999998em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1263455em;"><span class="svg-align" style="top:-5em;"><span class="pstrut" style="height:5em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.670941em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.6897100000000003em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-4.0863455em;"><span class="pstrut" style="height:5em;"></span><span class="hide-tail" style="min-width:1.02em;height:3.08em;"><svg width='400em' height='3.08em' viewBox='0 0 400000 3240' preserveAspectRatio='xMinYMin slice'><path d='M473,2793c339.3,-1799.3,509.3,-2700,510,-2702
+c3.3,-7.3,9.3,-11,18,-11H400000v40H1017.7s-90.5,478,-276.2,1466c-185.7,988,
+-279.5,1483,-281.5,1485c-2,6,-10,9,-24,9c-8,0,-12,-0.7,-12,-2c0,-1.3,-5.3,-32,
+-16,-92c-50.7,-293.3,-119.7,-693.3,-207,-1200c0,-1.3,-5.3,8.7,-16,30c-10.7,
+21.3,-21.3,42.7,-32,64s-16,33,-16,33s-26,-26,-26,-26s76,-153,76,-153s77,-151,
+77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,104,606z
+M1001 80H400000v40H1017z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9136544999999998em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><strong>用法</strong></p>
+<ol>
+<li>BOLL指标中的上、中、下轨线所形成的股价信道的移动范围是不确定的，信道的上下限随着股价的上下波动而变化。在正常情况下，股价应始终处于股价信道内运行。如果股价脱离股价信道运行，则意味着行情处于极端的状态下；</li>
+<li>在BOLL指标中，股价信道的上下轨是显示股价安全运行的最高价位和最低价位。上轨线、中轨线和下轨线都可以对股价的运行起到支撑作用，而上轨线和中轨线有时则会对股价的运行起到压力作用；</li>
+<li>一般而言，当股价在布林线的中轨线上方运行时，表明股价处于强势趋势;当股价在布林线的中轨线下方运行时，表明股价处于弱势趋势；</li>
+<li>当布林线的上、中、下轨线同时向上运行时，表明股价强势特征非常明显，股价短期内将继续上涨，投资者应坚决持股待涨或逢低买入；</li>
+<li>当布林线的上、中、下轨线同时向下运行时，表明股价的弱势特征非常明显，股价短期内将继续下跌，投资者应坚决持币观望或逢高卖出；</li>
+<li>当布林线的上轨线向下运行，而中轨线和下轨线却还在向上运行时，表明股价处于整理态势之中。如果股价是处于长期上升趋势时，则表明股价是上涨途中的强势整理，投资者可以持股观望或逢低短线买入;如果股价是处于长期下跌趋势时，则表明股价是下跌途中的弱势整理，投资者应以持币观望或逢高减仓为主；</li>
+<li>布林线的上轨线向上运行，而中轨线和下轨线同时向下运行，表明股价将经历一轮下跌，下跌的幅度将由开口的大小决定，反之，布林线的下轨线向下运行，而中轨线和上轨线同时向上运行，表明股价将经历一轮上涨，上涨的幅度将由开口的大小决定。这里不做展开讨论；</li>
+<li>当布林线的上、中、下轨线几乎同时处于水平方向横向运行时，则要看股价目前的走势处于什么样的情况下来判断。</li>
+</ol>
+<h4 id="成交量"><a class="markdownIt-Anchor" href="#成交量"></a> 成交量</h4>
+<p>成交量是指一个时间单位内撮合成交的股数，柱状越高表示成交量越大。该单位之间内买入量大于卖出量，柱状显示为红色；卖出量大于买入量，柱状显示为绿色。成交量必须结合价格分析，不然毫无意义。</p>
+<p><strong>用法</strong></p>
+<ol>
+<li>量价齐涨，表示股价将继续上升；</li>
+<li>股价随着缓慢递增的成交量而逐渐上涨，渐渐的走势突然变为陡峭上升的爆发行情，成交量急剧增加股价暴涨，但随后成交量大幅萎缩，股价急剧下跌，表示涨势已到末期，有转势可能；</li>
+<li>股价经历了较长时间的上涨后放巨量，通常表明多空分歧加大，有实力资金开始派发，后市继续上涨将面临一定困难；</li>
+<li>经历了深幅下跌后的巨量一般多为空方力量的最后一次集中释放，后市继续深跌的可能性很小，反弹或反转 的时机近在眼前；</li>
+<li>如果股市整体下跌，而个股逆势放量，在市场一片喊空声中放量上攻，造成 十分醒目的效果。这类个股往往持续时间不长，随后反而加速下跌</li>
+</ol>
+<h4 id="macd"><a class="markdownIt-Anchor" href="#macd"></a> MACD</h4>
+<p>MACD(Moving Average Convergence Divergence) 是利用收盘价的短期（常为12日）指数移动均线与长期（常为26日）移动均线之间的差离状况，对买、卖时机作出研判的技术指标。</p>
+<p><strong>用法</strong></p>
+<ol>
+<li>MACD金叉：DIFF快线（短期）由下向上穿过DEA慢线（长期），为买入信号；</li>
+<li>MACD死叉：DIFF快线（短期）由上向下穿过DEA慢线（长期），为卖入信号；</li>
+<li>DIFF，DEA线与股价走势发生背离，行情可能出现反转。如股价创新高，DIFF和DEA线未创新高，为卖出信号；股价创新低，而DIFF和DEA未创新低，为买入信号。实际运用中，顶背离比底背离准确性更高</li>
+</ol>
+<h3 id="警醒"><a class="markdownIt-Anchor" href="#警醒"></a> 警醒</h3>
+<p>江湖中之所以存在两大门派，是因为“短线投机”（即使是技术流）也经常被“打脸”。试想，如果一个人掌握了技术分析就可以保证短期获利，那么谁还会做“价值投资”呢？本质上，股价是由非常多的因素决定的随机数，只不过有时候某个因素占上风，随机数的变化方向比较明确，但谁又能保证下一秒不会出现另一个占上风的因素呢？</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/08/03/StockAnalysis-ShortTerm/" title="股价短线分析">https://ponysong3.top/2020/08/03/StockAnalysis-ShortTerm/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag"># 股票</a>
+              <a href="/tags/K%E7%BA%BF/" rel="tag"># K线</a>
+              <a href="/tags/%E7%9F%AD%E6%9C%9F/" rel="tag"># 短期</a>
+              <a href="/tags/%E5%9D%87%E7%BA%BF/" rel="tag"># 均线</a>
+              <a href="/tags/BOLL/" rel="tag"># BOLL</a>
+              <a href="/tags/%E6%88%90%E4%BA%A4%E9%87%8F/" rel="tag"># 成交量</a>
+              <a href="/tags/%E6%88%90%E4%BA%A4%E9%A2%9D/" rel="tag"># 成交额</a>
+              <a href="/tags/MACD/" rel="tag"># MACD</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/30/Financial-Analysis/" rel="prev" title="财务分析与决策">
+                  <i class="fa fa-chevron-left"></i> 财务分析与决策
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/08/11/dingding-robot/" rel="next" title="钉钉机器人定时自动发送消息">
+                  钉钉机器人定时自动发送消息 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+
+  
+
+    </div>
+</body>
+</html>

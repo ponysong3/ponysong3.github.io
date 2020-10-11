@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="2020年国内洪水泛滥之际，股市也碰到了“大水牛”，短短两周时间，经历了全民躁动、吹嘘、狂欢、跌落、焦躁、惨痛。股市里的这多浪花似乎是对人们的又一次戏虐，而在这个金钱至上、贫富分化、全民娱乐、炒作盛行、浮躁不堪的社会，人们的记忆神经足够短暂，不断掀起在学术、科技、媒体、楼市、股市的“泡沫剧”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="财经笔记">
+<meta property="og:url" content="https://ponysong3.top/2020/07/17/Financial-Study/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="2020年国内洪水泛滥之际，股市也碰到了“大水牛”，短短两周时间，经历了全民躁动、吹嘘、狂欢、跌落、焦躁、惨痛。股市里的这多浪花似乎是对人们的又一次戏虐，而在这个金钱至上、贫富分化、全民娱乐、炒作盛行、浮躁不堪的社会，人们的记忆神经足够短暂，不断掀起在学术、科技、媒体、楼市、股市的“泡沫剧”。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-17T13:15:38.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:24:34.577Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="金融">
+<meta property="article:tag" content="财经">
+<meta property="article:tag" content="股票">
+<meta property="article:tag" content="股市">
+<meta property="article:tag" content="投资">
+<meta property="article:tag" content="收益">
+<meta property="article:tag" content="贴现">
+<meta property="article:tag" content="估值">
+<meta property="article:tag" content="主力">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/07/17/Financial-Study/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>财经笔记 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.</span> <span class="nav-text"> 专业术语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%82%E7%9B%88%E7%8E%87"><span class="nav-number">1.1.</span> <span class="nav-text"> 市盈率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%82%E5%87%80%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text"> 市净率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%82%A1%E6%81%AF%E7%8E%87"><span class="nav-number">1.3.</span> <span class="nav-text"> 股息率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8F%E6%AF%94"><span class="nav-number">1.4.</span> <span class="nav-text"> 量比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%A2%E6%89%8B%E7%8E%87"><span class="nav-number">1.5.</span> <span class="nav-text"> 换手率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A7%94%E6%AF%94"><span class="nav-number">1.6.</span> <span class="nav-text"> 委比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%8A%9B%E6%88%96%E6%9C%BA%E6%9E%84%E6%98%AF%E8%B0%81"><span class="nav-number">2.</span> <span class="nav-text"> 主力或机构是谁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%82%A1%E7%A5%A8%E4%BC%B0%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text"> 股票估值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%B4%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> 贴现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%82%A1%E5%88%A9%E8%B4%B4%E7%8E%B0"><span class="nav-number">3.2.</span> <span class="nav-text"> 股利贴现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E7%94%B1%E7%8E%B0%E9%87%91%E6%B5%81%E8%B4%B4%E7%8E%B0"><span class="nav-number">3.3.</span> <span class="nav-text"> 自由现金流贴现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%82%A1%E5%B8%82%E7%AE%B4%E8%A8%80"><span class="nav-number">4.</span> <span class="nav-text"> 股市箴言</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/07/17/Financial-Study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          财经笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-07-17 21:15:38" itemprop="dateCreated datePublished" datetime="2020-07-17T21:15:38+08:00">2020-07-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:24:34" itemprop="dateModified" datetime="2020-10-12T03:24:34+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%87%91%E8%9E%8D/" itemprop="url" rel="index"><span itemprop="name">金融</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>2020年国内洪水泛滥之际，股市也碰到了“大水牛”，短短两周时间，经历了全民躁动、吹嘘、狂欢、跌落、焦躁、惨痛。股市里的这多浪花似乎是对人们的又一次戏虐，而在这个金钱至上、贫富分化、全民娱乐、炒作盛行、浮躁不堪的社会，人们的记忆神经足够短暂，不断掀起在学术、科技、媒体、楼市、股市的“泡沫剧”。</p>
+<a id="more"></a>
+<h3 id="专业术语"><a class="markdownIt-Anchor" href="#专业术语"></a> 专业术语</h3>
+<h4 id="市盈率"><a class="markdownIt-Anchor" href="#市盈率"></a> 市盈率</h4>
+<p>股票的<strong>市盈率</strong> (Price-to-Earning Ratio，P/E 或 PER)，又稱為<strong>本益比</strong>，指每股市價除以每股盈餘 (Earnings Per Share，EPS)，通常作為股票是便宜抑或昂貴的指標 (通货膨胀会使每股收益虚增，从而扭曲市盈率的比较价值)。市盈率把企業的股價與其製造財富的能力聯繫起來。</p>
+<p>每股盈餘的计算方法，一般是以该企业在过去一年的净利润，除总发行已售出股份淨值。<em>市盈率越低，代表投资者能够以相对较低价格购入股票</em>。假设某股票的市价为 24 元，而过去一年的每股盈餘为 3 元，则市盈率为 24/3=8。该股票被视为有 8 倍的市盈率，即假设该企业以后每年净利润和去年相同的基础上，如果不考虑通货膨胀因素，回本期为 8 年，折合平均年回报率为 12.5%，投资者每付出 8 元可分享 1 元的企业盈利。但上市公司通常只會把部分盈利用來派發股息，其餘用來作進一步發展，所以<strong>市盈率的倒數並不直接等同於股息率</strong>。</p>
+<p>投資者計算市盈率，主要用來比較不同股票的價值。理論上，股票的市盈率愈低，表示该股票的投资风险越小，愈值得投資。<strong>比較不同行業、不同國家、不同時段的市盈率是不大可靠的，比較同類股票的市盈率較有實用價值</strong>。</p>
+<p><strong>如果某股票有较高市盈率，则有可能因以下原因：</strong></p>
+<ul>
+<li>市場預測未來的盈利增長速度快。</li>
+<li>該企業一向錄得可觀盈利，但在前一個年度出現过一次性的特殊支出，降低了盈利。</li>
+<li>出现泡沫，该股被以超过其内在价值的价格在交易。</li>
+<li>該企業有特殊的優勢，保證能在低風險情況下持久錄得盈利。</li>
+<li>市場上可選擇的股票有限，在供求定律下，股價將上升。這令跨時間的市盈率比較變得意義不大。</li>
+</ul>
+<p><strong>如果某股票有较低市盈率，则有可能因以下原因：</strong></p>
+<ul>
+<li>市场预测该企业和去年相比较，盈利将减少，企业价值将下降。</li>
+<li>该企业在去年出现过一次性的特殊收入，暂时提高了去年的盈利。</li>
+<li>该股的价格被市场低估。</li>
+<li>股票的供给超过了市场上资金的投资需求。</li>
+</ul>
+<p>※值得一提，如果某股票的市盈率為零，即代表股票去年是在於虧損狀態。</p>
+<p><strong>静态市盈率</strong></p>
+<p>静态市盈率＝市价／最近一个财政年度的每股盈利</p>
+<p><strong>动态市盈率</strong><br />
+其计算公式是以静态市盈率为基数，乘以动态系数。该系数为1/(1+i)n，i为企业每股收益的增长性比率，n为企业的可持续发展的存续期。<br />
+上市公司目前股价为20元，每股收益为0.38元，去年同期每股收益为0.28元，成长性为35%，即i=35％，该企业未来保持该增长速度的时间可持续5年，即n=5，则动态系数为1/(1+35%)5=22%。相应地，动态市盈率为11.6倍（静态市盈率：20元/0.38元=52倍；动态市盈率：52倍×22％=11.6倍）</p>
+<p><strong>市盈率TTM</strong><br />
+市盈率TTM，又稱為滾動市盈率，一般是指在一定的考察期內(一般是最近連續12個月/4個財季)的市盈率。TTM，Trailing Twelve Months，是一個滾動概念，隨時都會根據時間的推進而變化。引入TTM的意義在於剔除財務分析上的季節性（seasonality）變化，使得分析更加嚴謹、符合邏輯。</p>
+<p>靜態市盈率的主要問題在於：凈利潤以上一期年報為數據，跟TTM比具有明顯滯後性，同時無法反應企業增發、配股、分紅等一系列變化帶來的財務上的變化。而動態市盈率的主要問題在於：各個企業每個季度的周期性完全不一樣，有的主要在上半年，有的主要在下半年。而PE-TTM兼具靜態和動態兩者的優勢。</p>
+<h4 id="市净率"><a class="markdownIt-Anchor" href="#市净率"></a> 市净率</h4>
+<p><strong>市净率</strong>（Price-to-Book Ratio, PBR, P/B），又名<strong>市账率、股價淨值比</strong>，指每股市价除以每股净资产，通常作为股票孰贱孰贵的指标之一。</p>
+<p>1992年，尤金·法马研究1963年至1990年的27年間美國股市總結算，以股價淨值比的高低將股票分為10組，發現最低的一組平均月報酬率達1.65%，而淨值比最高一組平均月報酬率只0.72%。另一方面美國著名基金經理人詹姆士．歐沙那希(James P. O’shaughnessy)，以1952年至1996年間44年資料總結算，發覺淨值比最低50檔美國股票所建立投資組合，能夠提供每年比大盤多1.92%的超額報酬。</p>
+<p>因此有一投資理論認為投資在低股價淨值比的公司，可以獲得超額報酬，因此又被稱為股價淨值比效應。</p>
+<p>關於此一效應的成因有各種解釋，著名基金經理人John Paulson認為資產在人類社會的獲利能力常被市場上非理性的低估，是造成這種隱藏利潤的可能性存在的原因。</p>
+<h4 id="股息率"><a class="markdownIt-Anchor" href="#股息率"></a> 股息率</h4>
+<p>每股股息（現金股利）除以每股股價，通常以百分比表示。現金股利為 1元，股價20元，則現金殖利率為5%；若來年配息仍為 1元，股價已至25元，則現金殖利率降為4%。</p>
+<p>股息率是挑选收益型股票的重要参考标准，如果连续多年年度股息率超过1年期银行存款利率，则这支股票基本可以视为收益型股票，股息率越高越吸引人。</p>
+<h4 id="量比"><a class="markdownIt-Anchor" href="#量比"></a> 量比</h4>
+<p>量比是衡量相对成交量的指标。它是开市后每分钟的平均成交量与过去5个交易日每分钟平均成交量之比。</p>
+<p>当量比大于1时,说明当日每分钟的平均成交量大于过去5日的平均值, 成交放大；交易比过去5日火爆；当量比小于1时,说明当日成交量小于过去5日的平均水平。成交萎缩。</p>
+<h4 id="换手率"><a class="markdownIt-Anchor" href="#换手率"></a> 换手率</h4>
+<p>周转率(换手率)＝(某一段时期内的成交量)/(发行总股数)x100%</p>
+<ul>
+<li>
+<p>股票的换手率越高，意味着该只股票的交投越活跃，人们购买该只股票的意愿越高，属于热门股；反之，股票的换手率越低，则表明该只股票少人关注，属于冷门股。</p>
+</li>
+<li>
+<p>换手率高一般意味着股票流通性好，进出市场比较容易，不会出现想买买不到、想卖卖不出的现象，具有较强的变现能力。然而值得注意的是，<strong>换手率较高的股票，往往也是短线资金追逐的对象，投机性较强，股价起伏较大，风险也相对较大</strong>。</p>
+</li>
+<li>
+<p>将换手率与股价走势相结合，可以对未来的股价做出一定的预测和判断。某只股票的换手率突然上升，成交量放大，可能意味着有投资者在大量买进，股价可能会随之上扬。<strong>如果某只股票持续上涨了一个时期后，换手率又迅速上升，则可能意昧着一些获利者要套现，股价可能会下跌</strong>。</p>
+</li>
+</ul>
+<h4 id="委比"><a class="markdownIt-Anchor" href="#委比"></a> 委比</h4>
+<p>委比=[委买数－委卖数]/[委买数＋委卖数]×100％</p>
+<ul>
+<li>委买数：现在所有个股委托买入下三档之手数相加之总和。</li>
+<li>委卖数：现在所有个股委托卖出上三档之手数相加之总和。</li>
+</ul>
+<p>委比的取值范围从－100％至＋100％。若“委比”为正值，说明场内买盘较强，且数值越大，买盘就越强劲。反之，若“委比”为负值并且负值大,，则说明市道较弱。</p>
+<p>我们知道，交易报价中委买委卖是最优的买卖盘的提示，大家能够看到的是队列的前五位，即买1-5，卖1-5。它是未成交的价和量，某种程度上 讲，委买委卖的差值（即委差），是投资者意愿的体现，一定程度上反映了价格的发展方向。委差为正，价格上升的可能性就大，反之，下降的可能性大。<strong>之所以加 上&quot;某种程度上&quot;，是因为还有人为干扰的因素，比如主力制造的假象等</strong>。</p>
+<p><strong>但是，对于市场中所有股票的委买委卖值的差值之总和，却是一个不容易被任何人干扰的数值</strong>。它是一个相对真实的数据。因为任何一个单独的主力都 不能影响它，散户更加不能。<strong>它是所有主力和散户的综合反映，确实能够反映市场真实的买卖意愿。我们根据这个数据，可以判断大盘的短期方向以及大盘的是否转折了</strong>。数值为正，表明买盘踊跃，大盘上升的可能性大，反之，说明卖盘较多，下跌的可能性则较大。</p>
+<h3 id="主力或机构是谁"><a class="markdownIt-Anchor" href="#主力或机构是谁"></a> 主力或机构是谁？</h3>
+<p>股票背后主力是谁？散户能不能割主力的韭菜？！</p>
+<p>我们经常听到散户说这个股票的“主力”开始建仓了、洗盘了、拉升了、出货了！很多股评家和媒体也津津乐道，主力又怎么怎么了，大家要时刻注意主力动态之类的。总而言之，“主力”是一个非常神奇的存在，能耐非常大，股价都是主力控制的，K线都是主力画出来的。但你问这些散户、股评家，你们说的主力到底是谁，大家一脸茫然，谁都说不出所以然。其实，绝大部分股票里边，根本就不存在什么主力。在绝大部分情况下，主力是大家臆想出来的。</p>
+<p>为什么这么说？所谓主力，就是有能力控制筹码、影响股价、并且通过操纵股价谋利的机构。在上个世纪，可以说有很多做庄行为。“我”记得“我”1998年刚刚入行的时候，大家讨论股票好不好，就是讨论这个股票有没有庄家，庄家实力强不强？那时候名动江湖的机构就有南方证券、德隆，如果庄家是南方证券、德隆，那大家觉得这是牛股，因为南方证券、德隆实力强、做庄狠。但2001年以来的五年熊市，绝大部分庄家都被熊市消灭了，因为很多庄家，高度控盘，确实是能操纵股价，但却发现没有接盘方、没法出货兑现账面盈利。与此同时，庄家往往是高利率融资来炒作股票，高额的资金成本使得庄家不堪重负。在2001-2005年这波熊市中，连南方证券、德隆这样大名鼎鼎的机构，因为做庄，也把自己做没了。</p>
+<p>进入21世纪以后，以公募基金为代表的机构投资者蓬勃发展，这些机构投资者基本抛弃了以前做庄的模式，走的是基本面投资、组合投资的套路，很少有人做庄了。基本面投资第一次为A股投资者所熟知，可以倒推到2003年，那一年公募基金成功挖掘出钢铁、汽车、石化、电力及银行等五大绩优蓝筹板块的投资价值，被大家叫着“五朵金花”行情，老股民应该还记忆犹新。那一年，公募基金也第一次从配角上升至主角，引领了价值投资的潮流。另外一个原因，现在的监管越来越严格，大数据监控等手段也越来越成熟，做庄等操纵市场的行为，很容易会被监管部门发现并查处，大家也越来越不敢做庄了。</p>
+<p>股票里边有一些持仓量比较大的机构投资者，这是显然的。但这些机构投资者和散户臆想的主力是完全不一样的。因为这些机构投资者基本上是“买入持有”策略，很少有人会走以前庄家吸筹、打压、拉升、出货的路子。为什么？一方面，是因为监管太严格，很少敢有人这么做；另一方面，现在的投资者结构跟以前不一样了，你恶意做庄，大股东或者其他机构投资者就会把筹码都倒给你，还没割到韭菜，自己先被割了。</p>
+<p>那到底谁在影响股价呢？</p>
+<p>股价其实就是千千万万投资者，包括这些机构投资者，包括散户，共同影响、共同交易出来的。特别是在中国，散户数量众多，而且散户喜欢跟风，羊群行为明显，他们的交易行为一旦产生共振，力量也是不可小觑。而且股价的短期波动有很大的偶然性，譬如某个机构的投资总监出门之前跟老婆吵了一架，心情很差，到了单位看着某股票就很不爽，就命令交易员卖了一部分筹码，导致股价下跌，这也会被散户理解为主力打压或者出货了。再譬如，某大股东要买个豪宅，减持了部分股票，也会导致股价下跌，也会被散户认为主力在行动。</p>
+<p>总而言之，股价的波动，在短期内有很大的偶然性，按照专业的说法，就是“随机漫步”。这里“我”也推荐一本关于股票市场的经典名著《漫步华尔街》，里边就讲到股票价格大部分时间是随机漫步的，非常值得一读。但在长期内，股价是由基本面决定的，这些都和那个神秘的“主力”无关。</p>
+<p>话又说回来了，虽然没有所谓的“主力”，机构投资者和大股东们还是有套路的，尤其在中国，自媒体发达、炒作风气盛行、信息不对称、泡沫严重、实业不振，导致“割韭菜戏码”频频上演，所以渐渐的中国股市炒的不是技术、不是价值，炒的是人性、炒的是情绪。</p>
+<h3 id="股票估值"><a class="markdownIt-Anchor" href="#股票估值"></a> 股票估值</h3>
+<h4 id="贴现"><a class="markdownIt-Anchor" href="#贴现"></a> 贴现</h4>
+<p>讨论股票估值，首先要明白“贴现”的概念。今天的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>块钱和明天的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>块钱是不等价的，因为我今天拿到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>块钱放到银行，明天它就变成了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1+r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span>块钱。相应的，明天的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>块钱相当于今天的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1/(1+r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span>块钱。这就是“贴现”的大致含义，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>是贴现率。</p>
+<h4 id="股利贴现"><a class="markdownIt-Anchor" href="#股利贴现"></a> 股利贴现</h4>
+<p>好，我们说回股票。单纯地讲，我们买股票是为了分红，假设某只股票P元/股​，每年的分红是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span>元/股，买了这只股票<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>年之后回本。按照贴现法，应该有下面的公式，这个公式最后的计算结果为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mi>D</mi><mi mathvariant="normal">/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">P=D/r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>，所以假如这只股票每年分红<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0.2</mn></mrow><annotation encoding="application/x-tex">0.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">2</span></span></span></span>元/股，贴现率是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">8\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">8</span><span class="mord">%</span></span></span></span>，那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">P=2.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">5</span></span></span></span>元​，也就是说这只股票每股<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2.5</mn></mrow><annotation encoding="application/x-tex">2.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">5</span></span></span></span>元才是合理的</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mfrac><mi>D</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>+</mo><mfrac><mi>D</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mi>D</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup></mrow></mfrac><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mfrac><mi>D</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">{P=\frac{D}{(1+r)}+\frac{D}{(1+r)^2}+\frac{D}{(1+r)^3}+...+\frac{D}{(1+r)^n}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.590392em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>但事实上，以上公式里<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>都很难确定，因为有些公司只拿出利润的一部分给股东分红，或者干脆不分红，利润都用于扩大再生产，这个时候根据分红<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span>来估算股价显然是不准确的。同时，折现率<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>要考虑无风险利率、风险补偿和通货膨胀，导致<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>本身就很难确定</p>
+<h4 id="自由现金流贴现"><a class="markdownIt-Anchor" href="#自由现金流贴现"></a> 自由现金流贴现</h4>
+<p>既然上市公司会将利润用于扩大再生产，那么我们就不能仅仅考虑分红了，更应该关注公司的可分配现金<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>元/股​，于是估算股价的公式就变成了</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mfrac><mi>C</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>+</mo><mfrac><mi>C</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mi>C</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup></mrow></mfrac><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mfrac><mi>C</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">{P=\frac{C}{(1+r)}+\frac{C}{(1+r)^2}+\frac{C}{(1+r)^3}+...+\frac{C}{(1+r)^n}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.590392em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>假设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">C=2.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">5</span></span></span></span>元/股，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>=</mo><mn>8</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">r=8\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">8</span><span class="mord">%</span></span></span></span>，那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mn>31.25</mn></mrow><annotation encoding="application/x-tex">P=31.25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mord">.</span><span class="mord">2</span><span class="mord">5</span></span></span></span>元/股，当然，这个估算仍然算不上准确，因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>是动态变化的，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>是很难确定的。所以，股票估值还是交给专业的评级机构去做吧。</p>
+<h3 id="股市箴言"><a class="markdownIt-Anchor" href="#股市箴言"></a> 股市箴言</h3>
+<ul>
+<li>想赚快钱、想暴富，别炒股</li>
+<li>分散投资</li>
+<li>不追涨</li>
+<li>只做低位建仓</li>
+<li>只做价值投资，不做新股、次新、概念炒作</li>
+<li>只买熟悉的公司或领域</li>
+<li>逢涨停必卖出，逢跌停必卖出</li>
+<li>及时止损，不做犹豫</li>
+<li>以上作为每次操作的checklist</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/07/17/Financial-Study/" title="财经笔记">https://ponysong3.top/2020/07/17/Financial-Study/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%87%91%E8%9E%8D/" rel="tag"># 金融</a>
+              <a href="/tags/%E8%B4%A2%E7%BB%8F/" rel="tag"># 财经</a>
+              <a href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag"># 股票</a>
+              <a href="/tags/%E8%82%A1%E5%B8%82/" rel="tag"># 股市</a>
+              <a href="/tags/%E6%8A%95%E8%B5%84/" rel="tag"># 投资</a>
+              <a href="/tags/%E6%94%B6%E7%9B%8A/" rel="tag"># 收益</a>
+              <a href="/tags/%E8%B4%B4%E7%8E%B0/" rel="tag"># 贴现</a>
+              <a href="/tags/%E4%BC%B0%E5%80%BC/" rel="tag"># 估值</a>
+              <a href="/tags/%E4%B8%BB%E5%8A%9B/" rel="tag"># 主力</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/06/23/Python-DataAnalysis/" rel="prev" title="有图有数据: Python数据分析">
+                  <i class="fa fa-chevron-left"></i> 有图有数据: Python数据分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/30/Financial-Analysis/" rel="next" title="财务分析与决策">
+                  财务分析与决策 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+
+  
+
+    </div>
+</body>
+</html>

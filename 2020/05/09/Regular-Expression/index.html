@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="知识的学习需要适当的需求、契合的指导、便捷的工具、持续的拓展:  适当的需求：没有需求驱动的学习是无源之水，无根之木，是一段“漫无目的的短途旅行” 契合的指导：凡是新领域、新知识、新技能，一定要有一段娓娓道来、引人入胜的人为入门指导。这种指导可以是一段免费视频，可以是一门付费课程，但一定要契合自己的水平、认知甚至性格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式救唐僧">
+<meta property="og:url" content="https://ponysong3.top/2020/05/09/Regular-Expression/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="知识的学习需要适当的需求、契合的指导、便捷的工具、持续的拓展:  适当的需求：没有需求驱动的学习是无源之水，无根之木，是一段“漫无目的的短途旅行” 契合的指导：凡是新领域、新知识、新技能，一定要有一段娓娓道来、引人入胜的人为入门指导。这种指导可以是一段免费视频，可以是一门付费课程，但一定要契合自己的水平、认知甚至性格">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ponysong3.top/images/find_film_by_reg.png">
+<meta property="article:published_time" content="2020-05-09T13:31:23.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:05:37.004Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="regex">
+<meta property="article:tag" content="regular expression">
+<meta property="article:tag" content="正则">
+<meta property="article:tag" content="正则表达式手册">
+<meta property="article:tag" content="在线测试工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ponysong3.top/images/find_film_by_reg.png">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/05/09/Regular-Expression/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>正则表达式救唐僧 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text"> 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text"> 指导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grep%E6%98%AF%E4%B8%80%E8%A1%8C%E8%A1%8C%E6%9D%A5%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.</span> <span class="nav-text"> grep是一行行来分析数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%98%AF%E9%AB%98%E7%BA%A7%E7%9A%84%E6%96%87%E6%9C%AC%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2%E5%B7%A5%E5%85%B7"><span class="nav-number">2.2.</span> <span class="nav-text"> 正则表达式是高级的文本查找和替换工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%AA%E6%9C%89%E4%B8%80%E7%A7%8D%E8%AF%AD%E6%B3%95%E4%BD%86%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B7%A5%E5%85%B7-%E8%AF%AD%E8%A8%80-%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE%E5%AF%B9%E6%AD%A3%E5%88%99%E8%AF%AD%E4%B9%89%E7%9A%84%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="nav-number">2.3.</span> <span class="nav-text"> 正则表达式只有一种语法，但不同的工具、语言、环境设置对正则语义的支持程度不一致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E8%82%AF%E5%AE%9A%E9%A2%84%E6%9F%A5"><span class="nav-number">2.4.</span> <span class="nav-text"> 反向肯定预查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text"> 工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%93%E5%B1%95"><span class="nav-number">4.</span> <span class="nav-text"> 拓展</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/05/09/Regular-Expression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          正则表达式救唐僧
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-09 21:31:23" itemprop="dateCreated datePublished" datetime="2020-05-09T21:31:23+08:00">2020-05-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:05:37" itemprop="dateModified" datetime="2020-10-12T03:05:37+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">正则表达式</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>知识的学习需要适当的需求、契合的指导、便捷的工具、持续的拓展:</p>
+<ul>
+<li>适当的需求：没有需求驱动的学习是无源之水，无根之木，是一段“漫无目的的短途旅行”</li>
+<li>契合的指导：凡是新领域、新知识、新技能，一定要有一段娓娓道来、引人入胜的人为入门指导。这种指导可以是一段免费视频，可以是一门付费课程，但一定要契合自己的水平、认知甚至性格</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>便捷的工具：Python的Pycharm和jupyter notebook，Markdown的Typora和Gitlab，Linux的VPS和Mac Book，正则表达式的手册和regex101，博客的hexo，MacOS的homebrew，代码管理的Github，XX上网的ESXI+Ros+openWRT等等，凡事要动手实践的事情，一定有一种工具可以帮到自己，这个工具可以是一本手册、硬件设备、软件、在线网页等等，当我们信手拈来的时候，这些工具就变成了我们的生产力</li>
+<li>持续的拓展：知识和技能都需要巩固和提升，这个过程一定是循序渐进、持之以恒的，最后在应用的深度和广度上达到一定高度，最好还能做到知识技能的相互融合，这才算完美</li>
+</ul>
+<p>好了，以上是学习正则表达式的些些感悟，下面上干货。对咯，感谢油管Up主“c鱼不沉“的视频启发</p>
+<hr />
+<h3 id="需求"><a class="markdownIt-Anchor" href="#需求"></a> 需求</h3>
+<p>无论Linux还是编程语言中，我们都遇到**“在茫茫多的字符中查找某种指定组合的字符”**，这个时候我们就需要一个工具帮助我们查找。其实在Linux和各种编程语言中，都提供了各种各样的字符查找工具，但显然我们想要一个通用、精准的查找工具。<br />
+Linux中，毋庸多说，正则表达式是必修课<br />
+编程语言中，如何使用正则表达式呢？举个Python的栗子🌰</p>
+<p>下面是被网友们玩烂的案例，提取<a target="_blank" rel="noopener" href="https://maoyan.com/board/4?offset=20">“猫眼电影Top100”</a>中的电影排名和电影图片链接，下面是从该网页源码中截取的一段，源网站还有千千万万个这样的源码。熟悉python爬虫的同学应该会想到，一层层提取元素，像剥洋葱一样，但其实并不容易，不信可以试一下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dd</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;board-index board-index-21&quot;</span>&gt;</span>21<span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/films/25310&quot;</span> <span class="attr">title</span>=<span class="string">&quot;忠犬八公物语&quot;</span> <span class="attr">class</span>=<span class="string">&quot;image-link&quot;</span> <span class="attr">data-act</span>=<span class="string">&quot;boarditem-click&quot;</span> <span class="attr">data-val</span>=<span class="string">&quot;&#123;movieId:25310&#125;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/image/loading_2.e3d934bf.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;poster-default&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">&quot;忠犬八公物语&quot;</span> <span class="attr">class</span>=<span class="string">&quot;board-img&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://p0.meituan.net/movie/2d42e00d7ee59ff5bd574f93b8558aa726665.jpg@160w_220h_1e_1c&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;board-item-main&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;board-item-content&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;movie-item-info&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/films/25310&quot;</span> <span class="attr">title</span>=<span class="string">&quot;忠犬八公物语&quot;</span> <span class="attr">data-act</span>=<span class="string">&quot;boarditem-click&quot;</span> <span class="attr">data-val</span>=<span class="string">&quot;&#123;movieId:25310&#125;&quot;</span>&gt;</span>忠犬八公物语<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;star&quot;</span>&gt;</span></span><br><span class="line">                    主演：仲代达矢,春川真澄,井川比佐志</span><br><span class="line">                <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;releasetime&quot;</span>&gt;</span>上映时间：1987-08-01(日本)<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;movie-item-number score-num&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;score&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;integer&quot;</span>&gt;</span>9.<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fraction&quot;</span>&gt;</span>0<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里我就不用python的find方法去提取了，直接看正则表达式的提取效果</p>
+<p><img src="/images/find_film_by_reg.png" alt="find_film_by_reg" /></p>
+<p>效果很明显：精准打击、一步到位<br />
+这就是正则表达式的魅力</p>
+<h3 id="指导"><a class="markdownIt-Anchor" href="#指导"></a> 指导</h3>
+<p>下面是对正则表达式的四个基本认知，突破了这几个认知，就等于打通了任督二脉，自学正则表达式便不在话下</p>
+<h4 id="grep是一行行来分析数据"><a class="markdownIt-Anchor" href="#grep是一行行来分析数据"></a> grep是一行行来分析数据</h4>
+<p>怎么理解呢？<br />
+比如，我用<code>^S.*?</code>去匹配下面这段字符</p>
+<blockquote>
+<p>Song<br />
+Pony</p>
+</blockquote>
+<p>匹配到的是以S开头的行，而不是以S开头的整个段落或全文</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[pony@vultrguest <span class="built_in">test</span>]$ <span class="built_in">echo</span> <span class="string">&quot;Song</span></span><br><span class="line"><span class="string">&gt; Pony&quot;</span> | grep -E <span class="string">&#x27;^S.*?&#x27;</span></span><br><span class="line">输出：Song</span><br></pre></td></tr></table></figure>
+<h4 id="正则表达式是高级的文本查找和替换工具"><a class="markdownIt-Anchor" href="#正则表达式是高级的文本查找和替换工具"></a> 正则表达式是高级的文本查找和替换工具</h4>
+<p>怎么理解？<br />
+设想下普通的文本查找和替换，你必须得输入要查找或替换的关键词，比如“Pony”。而正则表达式可以处理比较棘手的问题，即使你不知道具体的关键词是什么，但是你知道关键词是“大写字母开头，后面跟三个小写字母”，那么正则表达式就可以按照这种格式去查找和替换文本。<br />
+正则表达式就好像“你来比划我来猜”的游戏</p>
+<p>再举个栗子🌰：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[pony@vultrguest <span class="built_in">test</span>]$ <span class="built_in">echo</span> <span class="string">&quot;alsdjljaldjgPonyalksjdfljasf&quot;</span> | grep -Eo <span class="string">&#x27;[A-Z]&#123;1&#125;[a-z]&#123;3&#125;&#x27;</span> </span><br><span class="line">输出：Pony</span><br></pre></td></tr></table></figure>
+<h4 id="正则表达式只有一种语法但不同的工具-语言-环境设置对正则语义的支持程度不一致"><a class="markdownIt-Anchor" href="#正则表达式只有一种语法但不同的工具-语言-环境设置对正则语义的支持程度不一致"></a> 正则表达式只有一种语法，但不同的工具、语言、环境设置对正则语义的支持程度不一致</h4>
+<p>怎么理解？<br />
+比如，同一个Linux环境下，grep -E和grep -P的输出就不一样，栗子如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[pony@vultrguest <span class="built_in">test</span>]$ <span class="built_in">echo</span> <span class="string">&#x27;title=&quot;忠犬八公物语&quot; data-act=&quot;boarditem-click&quot; data-val=&quot;&#123;movieId:25310&#125;&quot;&gt;忠犬八公物语&lt;/a&gt;&lt;/p&gt;&#x27;</span> | grep -Eo <span class="string">&#x27;title=&quot;.+?&quot;&#x27;</span></span><br><span class="line">输出：title=<span class="string">&quot;忠犬八公物语&quot;</span> data-act=<span class="string">&quot;boarditem-click&quot;</span> data-val=<span class="string">&quot;&#123;movieId:25310&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[pony@vultrguest <span class="built_in">test</span>]$ <span class="built_in">echo</span> <span class="string">&#x27;title=&quot;忠犬八公物语&quot; data-act=&quot;boarditem-click&quot; data-val=&quot;&#123;movieId:25310&#125;&quot;&gt;忠犬八公物语&lt;/a&gt;&lt;/p&gt;&#x27;</span> | grep -Po <span class="string">&#x27;title=&quot;.+?&quot;&#x27;</span></span><br><span class="line">输出：title=<span class="string">&quot;忠犬八公物语&quot;</span></span><br></pre></td></tr></table></figure>
+<p>之所以出现这种差别，是因为grep -E只支持贪婪匹配，而grep -P利用perl语法则支持非贪婪匹配，这是不同的语言环境、配置导致的。</p>
+<p><strong>这种认知对初学者尤为重要，因为当你学完正则表达式基础语法之后，信心满满地与尝试练习，发现怎么都不能按照设想输出结果，简直怀疑人生。这个时候要看看你用的什么工具，grep、perl、python、java、C…<br />
+然后你就要查一下你所在环境的正则语法，找出差异点，只需要稍微对正则表达式的书写做一下修正，或者配置一下你的环境设置，那么正则表达式就可以正确无误了</strong></p>
+<h4 id="反向肯定预查"><a class="markdownIt-Anchor" href="#反向肯定预查"></a> 反向肯定预查</h4>
+<p>那位开始杠了：不是说正则表达式精确打击、一步到位吗？上面的例子为什么不能提取到“忠犬八公物语”，而是“title=“忠犬八公物语””。这显然不是正则表达式的水准，正则表达式不仅可以提取“指定组合的字符”，还可以提取“指定组合字符附近的字符”，呐～</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[pony@vultrguest <span class="built_in">test</span>]$ <span class="built_in">echo</span> <span class="string">&#x27;title=&quot;忠犬八公物语&quot; data-act=&quot;boarditem-click&quot; data-val=&quot;&#123;movieId:25310&#125;&quot;&gt;忠犬八公物语&lt;/a&gt;&lt;/p&gt;&#x27;</span> | grep -Po <span class="string">&#x27;(?&lt;=title=)&quot;.+?&quot;&#x27;</span></span><br><span class="line">输出：<span class="string">&quot;忠犬八公物语&quot;</span></span><br></pre></td></tr></table></figure>
+<p>以上建立了认知，就是建立了信心。接下来就是找到个合适工具，过一遍基本语法点，以后用到就有印象可查了。所以呢，正则表达式其实不难，还很优秀。</p>
+<h3 id="工具"><a class="markdownIt-Anchor" href="#工具"></a> 工具</h3>
+<p>推荐两个工具：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://regex101.com/">regx101</a>正则表达式在线测试工具</li>
+<li><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jquery/regexp.html">正则表达式手册</a><br />
+对照着手册，将每个语法点放到在线测试工具上跑一下，基本上就把正则表达式的知识点学完了</li>
+</ul>
+<h3 id="拓展"><a class="markdownIt-Anchor" href="#拓展"></a> 拓展</h3>
+<p>还记得前面说过“正则表达式只有一种语法，但不同的工具、语言、环境设置对正则语义的支持程度不一致”吗？如果学了一遍正则表达式的知识点之后，转而去用一门编程语言跑正则表达式，不出意外一定会碰壁的，这个时候就要去研究所在环境对正则表达式的规则设定了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/05/09/Regular-Expression/" title="正则表达式救唐僧">https://ponysong3.top/2020/05/09/Regular-Expression/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/regex/" rel="tag"># regex</a>
+              <a href="/tags/regular-expression/" rel="tag"># regular expression</a>
+              <a href="/tags/%E6%AD%A3%E5%88%99/" rel="tag"># 正则</a>
+              <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%89%8B%E5%86%8C/" rel="tag"># 正则表达式手册</a>
+              <a href="/tags/%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" rel="tag"># 在线测试工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/04/Markdown-Study/" rel="prev" title="Markdown浅析">
+                  <i class="fa fa-chevron-left"></i> Markdown浅析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/12/Shell-Study/" rel="next" title="Shell脚本的实践">
+                  Shell脚本的实践 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

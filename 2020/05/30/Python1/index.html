@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="这是一篇MOOC听课笔记，感于MOOC和嵩天老师团队用心出精品，所以本笔记力求详尽记录他们的智慧与经验，力求深刻地理解他们的经验，力求将他们的智慧传之久远、传之众人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机与程序设计">
+<meta property="og:url" content="https://ponysong3.top/2020/05/30/Python1/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="这是一篇MOOC听课笔记，感于MOOC和嵩天老师团队用心出精品，所以本笔记力求详尽记录他们的智慧与经验，力求深刻地理解他们的经验，力求将他们的智慧传之久远、传之众人">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-30T12:24:44.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:05:35.088Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="方法">
+<meta property="article:tag" content="步骤">
+<meta property="article:tag" content="思维">
+<meta property="article:tag" content="认识">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/05/30/Python1/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>计算机与程序设计 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text"> 计算机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">2.</span> <span class="nav-text"> 计算的发展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text"> 程序设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"><span class="nav-number">4.</span> <span class="nav-text"> 程序设计语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="nav-number">5.</span> <span class="nav-text"> 编译与解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text"> 计算机编程方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E8%83%BD%E5%A4%9F%E5%B8%A6%E4%BD%A0%E9%A3%9E"><span class="nav-number">7.</span> <span class="nav-text"> 编程能够带你飞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%BC%96%E7%A8%8B%E7%9A%84%E8%AF%AF%E5%8C%BA"><span class="nav-number">8.</span> <span class="nav-text"> 学习编程的误区</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/05/30/Python1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机与程序设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-30 20:24:44" itemprop="dateCreated datePublished" datetime="2020-05-30T20:24:44+08:00">2020-05-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:05:35" itemprop="dateModified" datetime="2020-10-12T03:05:35+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这是一篇MOOC听课笔记，感于MOOC和嵩天老师团队用心出精品，所以本笔记力求详尽记录他们的智慧与经验，力求深刻地理解他们的经验，力求将他们的智慧传之久远、传之众人</p>
+<a id="more"></a>
+<h4 id="计算机"><a class="markdownIt-Anchor" href="#计算机"></a> 计算机</h4>
+<p>计算机本质上是一个根据指令操作数据的设备，它必须具备两个特性：</p>
+<ul>
+<li>功能性：对数据的操作，表现为对数据计算、输入输出处理和结果存储等</li>
+<li>可编程性：根据一系列指令自动地、可预测地、准确地完成操作者的意图</li>
+</ul>
+<h4 id="计算的发展"><a class="markdownIt-Anchor" href="#计算的发展"></a> 计算的发展</h4>
+<p>从1946年第一台计算机诞生，计算机参照摩尔定律发展，表现为指数形式，具体来说：</p>
+<ul>
+<li>
+<p>计算机硬件所依赖的集成电路规模参照摩尔定律发展</p>
+</li>
+<li>
+<p>计算机运行速度因此也接近几何级数快速增长</p>
+</li>
+<li>
+<p>计算机所能高效支撑的各类运算功能不断丰富</p>
+</li>
+<li>
+<p>摩尔定律在接下来的30年还将继续有效</p>
+</li>
+</ul>
+<p>根据时间路线和时代趋势，我们可以把计算机的发展分为四个阶段：</p>
+<ul>
+<li>
+<p>1946年(第一台计算机诞生)–1982年(第一台PC机诞生)：计算机结构时代，计算机性能是瓶颈，人们致力于解决计算能力问题</p>
+</li>
+<li>
+<p>1981(第一台PC机诞生)–2008年(安卓系统诞生): 网络和视窗时代，人们致力于人机交互和机机交互，即更优的操作系统视窗交互和更快的网络传输</p>
+</li>
+<li>
+<p>2008年(安卓系统诞生)–2016年(人工智能)：复杂信息系统时代，大数据、云计算、网络安全、人工智能开始蓬勃发展，人们关注大量数据的产生、计算、存储</p>
+</li>
+<li>
+<p>2016(人工智能)–未来：人工智能时代，未来可期</p>
+</li>
+</ul>
+<h4 id="程序设计"><a class="markdownIt-Anchor" href="#程序设计"></a> 程序设计</h4>
+<p>程序设计是计算机可编程性的具体体现</p>
+<ul>
+<li>程序设计也叫编程，它是<strong>深度应用计算机的主要手段</strong></li>
+<li>程序设计也是当今社会需求量最大的职业技能之一</li>
+<li>在未来，程序设计将是生存技能</li>
+</ul>
+<h4 id="程序设计语言"><a class="markdownIt-Anchor" href="#程序设计语言"></a> 程序设计语言</h4>
+<p>编程语言的江湖出现过600多种语言，这些语言多数已经消失在时代的浩渺中，还有一些大品种编程语言坚强不屈。这些语言的产生都有时代背景和设计初心：</p>
+<ul>
+<li>二进制语言：机器语言，随计算机一起诞生，只有计算机专家能够看懂和操作</li>
+<li>汇编语言：接近机器语言，便于计算机专家记忆</li>
+<li>C语言：诞生在计算机结构时代，更关注硬件资源限制，适用于计算机类专业人员用于设计开发计算机底层程序</li>
+<li>Java语言：诞生在网络和视窗时代，更关注跨平台、主客体关系，更适合软件类专业人员进行软件开发和设计</li>
+<li>VB/.net等：解决桌面应用问题，关注按钮、文本框等交互逻辑，目前已经过时了</li>
+<li>HTML/CSS/JS: 不可替代的前端技术，而后端技术中Python是选择之一</li>
+<li>Python: 发展于复杂信息系统时代，计算机资源不再是瓶颈，面向编程逻辑，使用第三方库完成程序，只希望理解问题的求解，适用于各种专业人员使用</li>
+</ul>
+<p>把上述程序设计语言和Python放在一起，再提炼一下程序设计语言的特点：</p>
+<ul>
+<li>程度设计语言是一种用于人机交互的人造语言</li>
+<li>程序设计语言，亦称编程语言，是程序设计的具体实现方式</li>
+<li>程序设计语言比自然语言更简单、更严谨、跟精确</li>
+<li>编程语言出现过600多种，大多数已经不再被使用</li>
+<li>C语言、Java、Python都是当今流行的编程语言；<strong>凯撒的归凯撒，Python的归Python，C归C</strong></li>
+<li>Python的语法简洁、生态高产，可以提升10倍乃至100倍编写效率，<strong>工具决定思维，关注工具变革的力量</strong></li>
+<li>Python是唯一的超级语言，她的编程思维不是刀耕火种，是集成开发</li>
+<li>随着当今社会人工智能和计算机性能的发展，Python已经编程最流行的编程语言</li>
+<li>Python在接下来的20多年还将保持为最流行的编程语言</li>
+</ul>
+<h4 id="编译与解释"><a class="markdownIt-Anchor" href="#编译与解释"></a> 编译与解释</h4>
+<p>编程语言按照执行方式来划分：编译与解释</p>
+<ul>
+<li>编译（Compiler）：将源代码通过编译器一次性转换成目标代码，编译之后不再需要源代码</li>
+<li>解释（Interpreter）：将源代码逐条转换成目标代码同时逐条运行的过程，每次执行都要源代码参与</li>
+</ul>
+<p>基于上述执行方式，可以把编程语言分为两类：</p>
+<ul>
+<li>静态语言：使用编译执行的编程语言，包括C/C++，Java等</li>
+<li>脚本语言：使用解释执行的编程语言，包括Python，PHP，JavaScript等</li>
+</ul>
+<h4 id="计算机编程方法"><a class="markdownIt-Anchor" href="#计算机编程方法"></a> 计算机编程方法</h4>
+<p>怎么理解编写程序这件事情呢？</p>
+<p><strong>程序编写基本方法—IPO</strong></p>
+<ul>
+<li>
+<p>I	Input表示程序的输入<br />
+包括：文件输入、网络输入、控制台输入、交互界面输入、内部参数输入等，任何程序都必然有输入，输入是一个程序的开始</p>
+</li>
+<li>
+<p>P Process表示程序的主要逻辑<br />
+Process也叫处理，处理是程序对输入数据进行计算产生输出结果的过程。处理的方法统称算法，它是程序最重要的部分。算法是一个程序的灵魂。</p>
+</li>
+<li>
+<p>O Output表示程序的输出<br />
+包括：控制台输出、图形输出、文件输出、网络输出、内部变量输出等</p>
+</li>
+</ul>
+<p><strong>计算机只解决计算问题</strong></p>
+<ul>
+<li>计算机只能解决计算问题，即问题的计算部分</li>
+<li>一个问题可能有多种角度理解，产生不同的计算部分</li>
+<li>问题的计算部分一般都有输入、处理和输出过程</li>
+</ul>
+<p><strong>编程解决问题的步骤</strong></p>
+<ul>
+<li>分析问题：分析问题的计算部分，想清楚使用编程解决问题的哪个计算需求</li>
+<li>划分边界：划分问题的功能边界，即规划IPO</li>
+<li>设计算法：设计问题求解的基本方法</li>
+<li>编写程序：即代码实现</li>
+<li>调试测试：调试程序使正确运行</li>
+<li>升级维护：程序运行一段时间后进一步优化、升级程序</li>
+</ul>
+<p>精简版的编程步骤：</p>
+<ul>
+<li>明确目标</li>
+<li>拆解问题</li>
+<li>代码实现</li>
+</ul>
+<h4 id="编程能够带你飞"><a class="markdownIt-Anchor" href="#编程能够带你飞"></a> 编程能够带你飞</h4>
+<ol>
+<li>编程能够训练思维</li>
+</ol>
+<ul>
+<li>编程体现了一种抽象交互关系、自动化执行的思维模式</li>
+<li>计算思维：区别于数学中的逻辑思维和物理中的实证思维的第三种思维模式</li>
+<li>能够促进人类思考，增进观察力和深化交互关系的理解</li>
+</ul>
+<ol start="2">
+<li>编程能够增进认识</li>
+</ol>
+<ul>
+<li>编程不单纯是求解计算问题</li>
+<li>不仅要思考解决方法，还要思考用户体验、执行效率、社会趋势等</li>
+<li>能够帮助加深用户行为以及社会文化的认识</li>
+</ul>
+<ol start="3">
+<li>编程能够带来乐趣</li>
+</ol>
+<ul>
+<li>编程能够提供展示自身思想和能力的舞台，用一台电脑把你的所思所想变为现实</li>
+<li>为世界输出你的想法和作品，让自己变的更酷，让自己更满足</li>
+<li>在信息空间里思考创新，让创新快速变为现实</li>
+</ul>
+<ol start="4">
+<li>编程能够提高效率</li>
+</ol>
+<ul>
+<li>能够利用计算机解决问题</li>
+<li>显著提高工作、学习和生活效率</li>
+<li>为理想的实现提供一种借助计算机的高效手段</li>
+</ul>
+<h4 id="学习编程的误区"><a class="markdownIt-Anchor" href="#学习编程的误区"></a> 学习编程的误区</h4>
+<p>Q: 编程很难学吗？<br />
+A: 掌握方法就很容易！</p>
+<ul>
+<li>首先，掌握编程语言的语法，熟悉基本概念和逻辑</li>
+<li>其次，结合计算问题思考程序结构，会使用编程套路</li>
+<li>最后，参照案例多练习多实践，学会举一反三</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/05/30/Python1/" title="计算机与程序设计">https://ponysong3.top/2020/05/30/Python1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag"># 计算机</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+              <a href="/tags/%E6%96%B9%E6%B3%95/" rel="tag"># 方法</a>
+              <a href="/tags/%E6%AD%A5%E9%AA%A4/" rel="tag"># 步骤</a>
+              <a href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag"># 思维</a>
+              <a href="/tags/%E8%AE%A4%E8%AF%86/" rel="tag"># 认识</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/27/Himalaya/" rel="prev" title="珠峰登顶">
+                  <i class="fa fa-chevron-left"></i> 珠峰登顶
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/06/04/Python2/" rel="next" title="Python语法元素分析">
+                  Python语法元素分析 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

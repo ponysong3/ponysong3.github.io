@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="网络世界是纷繁复杂的，你一直无暇顾及，但也见怪不怪的一些网页信息包括：  此站点不安全 您的连接不是私密连接 您与此网站之间建立的连接不安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="https:可靠来源和传输的网页">
+<meta property="og:url" content="https://ponysong3.top/2020/05/24/https-study/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="网络世界是纷繁复杂的，你一直无暇顾及，但也见怪不怪的一些网页信息包括：  此站点不安全 您的连接不是私密连接 您与此网站之间建立的连接不安全">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ponysong3.top/images/unsafe-link.png">
+<meta property="og:image" content="https://ponysong3.top/images/baidu_certificate.png">
+<meta property="og:image" content="https://ponysong3.top/images/CA_authority.png">
+<meta property="article:published_time" content="2020-05-24T15:40:45.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:05:39.972Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="https">
+<meta property="article:tag" content="公钥">
+<meta property="article:tag" content="私钥">
+<meta property="article:tag" content="CA">
+<meta property="article:tag" content="数字签名">
+<meta property="article:tag" content="证书签名">
+<meta property="article:tag" content="信息安全">
+<meta property="article:tag" content="数字证书">
+<meta property="article:tag" content="SSL">
+<meta property="article:tag" content="TLS">
+<meta property="article:tag" content="握手">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ponysong3.top/images/unsafe-link.png">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/05/24/https-study/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>https:可靠来源和传输的网页 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%9D%A5%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text"> 可靠来源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%9D%A0%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E5%90%91%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E6%98%8E%E6%88%91%E6%98%AF%E5%8F%AF%E9%9D%A0%E6%9D%A5%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text"> 服务端靠证书签名向客户端证明，我是可靠来源。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9D%A0%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E5%90%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%81%E6%98%8E%E6%88%91%E6%98%AF%E5%8F%AF%E9%9D%A0%E6%9D%A5%E6%BA%90%E5%8F%AF%E9%80%89"><span class="nav-number">1.2.</span> <span class="nav-text"> 客户端靠证书签名向服务端证明，我是可靠来源（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E6%9D%A5%E8%87%AA%E5%93%AA%E9%87%8C"><span class="nav-number">1.3.</span> <span class="nav-text"> 证书签名来自哪里？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%96%B9%E6%9C%BA%E6%9E%84%E6%98%AF%E8%B0%81"><span class="nav-number">1.4.</span> <span class="nav-text"> 三方机构是谁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%E5%88%AB%E4%BA%BA%E5%86%92%E5%85%85%E6%9D%83%E5%A8%81%E6%9C%BA%E6%9E%84%E7%AD%BE%E5%90%8D"><span class="nav-number">1.5.</span> <span class="nav-text"> 怎么避免别人冒充权威机构签名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="nav-number">2.</span> <span class="nav-text"> 可靠传输</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/05/24/https-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          https:可靠来源和传输的网页
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-24 23:40:45" itemprop="dateCreated datePublished" datetime="2020-05-24T23:40:45+08:00">2020-05-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:05:39" itemprop="dateModified" datetime="2020-10-12T03:05:39+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>网络世界是纷繁复杂的，你一直无暇顾及，但也见怪不怪的一些网页信息包括：</p>
+<ul>
+<li>此站点不安全</li>
+<li>您的连接不是私密连接</li>
+<li>您与此网站之间建立的连接不安全</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>您的连接并不安全</li>
+<li>证书无效</li>
+</ul>
+<p>甚至你也听说过“网络抓包”，经历过“网络安全的培训”。这种信息听多了、见多了反而就不敏感了，更何况网络安全的东西如此之晦涩、枯燥。所以呢，我打算用村里的话就聊聊上网的事情。</p>
+<h3 id="可靠来源"><a class="markdownIt-Anchor" href="#可靠来源"></a> 可靠来源</h3>
+<h4 id="服务端靠证书签名向客户端证明我是可靠来源"><a class="markdownIt-Anchor" href="#服务端靠证书签名向客户端证明我是可靠来源"></a> 服务端靠证书签名向客户端证明，我是可靠来源。</h4>
+<p>几乎所有的服务端都需要证书签名，证书签名用来证明该服务端是可靠的，而非钓鱼网站，从而避免用户把自己的信息交给一个不可靠的网站。</p>
+<p>举个栗子🌰<br />
+有一家公司叫“体面公司”，<a target="_blank" rel="noopener" href="http://xn--www-0c0fsd425ef40a9yo.timian.com">它的官网是www.timian.com</a>，网站上都是“体面信息”，突然有一天你在浏览网页的时候看到一个弹窗“体面公司重磅新闻，每个员工发30万奖金”，然后你激动地点开了弹窗，跳转到网页，但是今天的网页有点奇怪，显示如下。你觉着没什么，点击高级，强行打开了网站，然后网页提示你先登记个人信息，然后就能拿到30万……<br />
+好了，这个故事就编到这里了。我想告诉你的是，这个网站是个冒牌网站，因为该冒牌网站没有三方机构的签名，所以浏览器已经帮你识别到它是不可靠来源了，而你还是强行进去了，当你把个人信息交给这个不可靠网站的时候，悲剧可能就一步步发生了……</p>
+<p><img src="/images/unsafe-link.png" alt="unsafe-link" /></p>
+<h4 id="客户端靠证书签名向服务端证明我是可靠来源可选"><a class="markdownIt-Anchor" href="#客户端靠证书签名向服务端证明我是可靠来源可选"></a> 客户端靠证书签名向服务端证明，我是可靠来源（可选）</h4>
+<p>为什么是可选呢？ 因为一般公开的服务端（如百度、谷歌等）是不要求客户端来源可靠的，他们是对世人公开的。这里你可能疑惑了，服务端不管张三、李四、赵五的来源，那怎么能保证他不会把张三的数据交给李四。答案是用户身份验证，也就是你每次跟服务端建立连接，服务器都为你单独创建了一个Session(会话)和Cookie(身份信息)。这样就能保证，张三、李四、赵五都能去找服务端，服务端来者不拒，但是他会为这些人单独创建会话，互不干扰。</p>
+<h4 id="证书签名来自哪里"><a class="markdownIt-Anchor" href="#证书签名来自哪里"></a> 证书签名来自哪里？</h4>
+<p>无论你是服务端还是客户端，想要申请签名，都要将自己的“组织信息”和“公钥”交给三方机构，三方机构对其核发证书并签名，并且三方机构使用自己的私钥对签名进行加密。我们来看一下三方机构核发给百度的证书和签名。</p>
+<p><img src="/images/baidu_certificate.png" alt="baidu_certificate" /></p>
+<h4 id="三方机构是谁"><a class="markdownIt-Anchor" href="#三方机构是谁"></a> 三方机构是谁？</h4>
+<p>三方机构是举世公认的CA(Certificate Authority)机构，它们有多么权威呢？无论你在用Windows还是MacOS，你的系统都预置了它们的信息（如下图），这是“与生俱来”的权威，所以你完全没必要担心谁是权威的三方机构。</p>
+<p><img src="/images/CA_authority.png" alt="CA_authority" /></p>
+<h4 id="怎么避免别人冒充权威机构签名"><a class="markdownIt-Anchor" href="#怎么避免别人冒充权威机构签名"></a> 怎么避免别人冒充权威机构签名</h4>
+<p>三方权威机构拥有一对密钥：私钥和公钥。</p>
+<ul>
+<li>私钥用于对证书签名进行加密，三方权威机构自己保管私钥。</li>
+<li>公钥公之于众，任何人都可以获得三方权威机构的公钥，并且可以用公钥解密私钥加密过的证书签名。能解密成功说明该数字证书来自三方权威机构，解密失败说明该数字证书无效。</li>
+</ul>
+<h3 id="可靠传输"><a class="markdownIt-Anchor" href="#可靠传输"></a> 可靠传输</h3>
+<p>上面基本上可以保证数据或连接的来源是可靠的了，也就是我们已经确保连接的两端是可靠的了。那么如何保证连接通道是可靠的呢？也就是如何保证数据或连接不会被别人监听、窃取呢？</p>
+<p>答案当然是对数据传输进行加密。那么如何进行数据传输的加密呢？我们以服务端和客户端的会话过程举个栗子🌰</p>
+<ul>
+<li>客户端：Hi，是服务端吗，可以找你聊聊吗？</li>
+<li>服务端：Hi，客户端，我是服务端。<br />
+呐～这是我的证书签名，三方权威机构认证过的，所以，我就是我，不一样的烟火～哈哈<br />
+哦对了，为了我们对话的安全，我把我的“公钥”也放在“证书签名”里了，接下来你就可以用我的“公钥”加密你说的话，我收到后会用“私钥”解开的，这个“私钥”只有我自己有，别人不会有，这样就不用担心你说的话被别人听到了。</li>
+<li>客户端：好的 (偷偷拿着服务端的签名找了一下三方权威机构，让人家验证了一下，确认是真的服务端)。你的“公钥”我收下 了，接下来我会用你的“公钥”加密我说的话。同样的，那么我也把我的“公钥”给你吧，你用我的“公钥”加密你说的话，我也会用我的“私钥”解密你说的话。</li>
+<li>服务端：好的，那我们聊起来吧</li>
+<li>客户端：***************</li>
+<li>服务端：***************</li>
+<li>客户端：***************</li>
+<li>服务端：***************</li>
+</ul>
+<p>你看，客户端和服务端就则样聊骚起来了，我们也不知道它们在聊些什么，这就是网络安全。</p>
+<p>本文尽最大努力让SSL/TLS的原理简化和形象，而真正的SSL/TLS协议和加密技术要复杂的多。本文主要针对非专业人士，期望大家上网更胆大心细，其实网络安全就在我们眼前。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/05/24/https-study/" title="https:可靠来源和传输的网页">https://ponysong3.top/2020/05/24/https-study/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/https/" rel="tag"># https</a>
+              <a href="/tags/%E5%85%AC%E9%92%A5/" rel="tag"># 公钥</a>
+              <a href="/tags/%E7%A7%81%E9%92%A5/" rel="tag"># 私钥</a>
+              <a href="/tags/CA/" rel="tag"># CA</a>
+              <a href="/tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" rel="tag"># 数字签名</a>
+              <a href="/tags/%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D/" rel="tag"># 证书签名</a>
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" rel="tag"># 信息安全</a>
+              <a href="/tags/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/" rel="tag"># 数字证书</a>
+              <a href="/tags/SSL/" rel="tag"># SSL</a>
+              <a href="/tags/TLS/" rel="tag"># TLS</a>
+              <a href="/tags/%E6%8F%A1%E6%89%8B/" rel="tag"># 握手</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/22/My-Classmate/" rel="prev" title="才华——我的大学同学">
+                  <i class="fa fa-chevron-left"></i> 才华——我的大学同学
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/27/Himalaya/" rel="next" title="珠峰登顶">
+                  珠峰登顶 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="此处引用知乎大V的话：财务分析所要用到的知识和技能，正规的本科财务教育和注册会计师考试里教的东西基本就绰绰有余了，看更多没有太大的用。如果说真的要看书，那就多看些拓展知识面和提升思维深度的杂书要多看看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="财务分析与决策">
+<meta property="og:url" content="https://ponysong3.top/2020/07/30/Financial-Analysis/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="此处引用知乎大V的话：财务分析所要用到的知识和技能，正规的本科财务教育和注册会计师考试里教的东西基本就绰绰有余了，看更多没有太大的用。如果说真的要看书，那就多看些拓展知识面和提升思维深度的杂书要多看看。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-30T14:08:51.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:24:33.557Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="企业">
+<meta property="article:tag" content="财务">
+<meta property="article:tag" content="分析">
+<meta property="article:tag" content="报表">
+<meta property="article:tag" content="决策">
+<meta property="article:tag" content="经营">
+<meta property="article:tag" content="资产">
+<meta property="article:tag" content="负债">
+<meta property="article:tag" content="利润">
+<meta property="article:tag" content="现金流">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/07/30/Financial-Analysis/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>财务分析与决策 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text"> 财务分析的意义是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E7%9A%84%E7%B4%A0%E6%9D%90%E6%98%AF%E6%8A%A5%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text"> 财务分析的素材是报表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%84%E4%BA%A7%E8%B4%9F%E5%80%BA%E8%A1%A8balance-sheet"><span class="nav-number">3.</span> <span class="nav-text"> 资产负债表Balance Sheet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%84%E4%BA%A7assets"><span class="nav-number">3.1.</span> <span class="nav-text"> 资产Assets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%A7%E5%B8%81%E8%B5%84%E9%87%91cash"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 货币资金Cash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E6%94%B6%E5%B8%90%E6%AC%BEaccounts-receivable"><span class="nav-number">3.1.2.</span> <span class="nav-text"> 应收帐款Accounts Receivable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%BA%94%E6%94%B6%E6%AC%BEother-receivables"><span class="nav-number">3.1.3.</span> <span class="nav-text"> 其他应收款Other Receivables</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E4%BB%98%E8%B4%A6%E6%AC%BEprepaid-accounts"><span class="nav-number">3.1.4.</span> <span class="nav-text"> 预付账款Prepaid Accounts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%98%E8%B4%A7inventory"><span class="nav-number">3.1.5.</span> <span class="nav-text"> 存货Inventory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BE%85%E6%91%8A%E8%B4%B9%E7%94%A8deferred-expenses"><span class="nav-number">3.1.6.</span> <span class="nav-text"> 待摊费用Deferred Expenses</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%81%E5%8A%A8%E8%B5%84%E4%BA%A7current-assets"><span class="nav-number">3.1.7.</span> <span class="nav-text"> 流动资产Current Assets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%9E%E6%B5%81%E5%8A%A8%E8%B5%84%E4%BA%A7non-current-assets"><span class="nav-number">3.1.8.</span> <span class="nav-text"> 非流动资产Non-current Assets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7fixed-asset"><span class="nav-number">3.1.9.</span> <span class="nav-text"> 固定资产Fixed Asset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E5%BD%A2%E8%B5%84%E4%BA%A7intangible-assets"><span class="nav-number">3.1.10.</span> <span class="nav-text"> 无形资产Intangible Assets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%95%BF%E6%9C%9F%E6%8A%95%E8%B5%84long-term-investment"><span class="nav-number">3.1.11.</span> <span class="nav-text"> 长期投资Long-term Investment</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%9F%E5%80%BAliability"><span class="nav-number">3.2.</span> <span class="nav-text"> 负债Liability</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%AD%E6%9C%9F%E5%80%9F%E6%AC%BEshort-term-borrowing"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 短期借款Short-term Borrowing</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E4%BB%98%E6%AC%BEaccounts-payable"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 应付款Accounts Payable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%BA%94%E4%BB%98%E6%AC%BEother-payable"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 其他应付款Other Payable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E6%94%B6%E6%AC%BEdeposit-received"><span class="nav-number">3.2.4.</span> <span class="nav-text"> 预收款Deposit Received</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%B4%9F%E5%80%BAother-liability"><span class="nav-number">3.2.5.</span> <span class="nav-text"> 其他负债Other Liability</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%81%E5%8A%A8%E8%B4%9F%E5%80%BAcurrent-liability"><span class="nav-number">3.2.6.</span> <span class="nav-text"> 流动负债Current Liability</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%95%BF%E6%9C%9F%E5%80%9F%E6%AC%BElong-term-borrowing"><span class="nav-number">3.2.7.</span> <span class="nav-text"> 长期借款Long-term Borrowing</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E4%BB%98%E5%80%BA%E5%88%B8bond-payable"><span class="nav-number">3.2.8.</span> <span class="nav-text"> 应付债券Bond Payable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%95%BF%E6%9C%9F%E5%BA%94%E4%BB%98%E6%AC%BElong-term-payable"><span class="nav-number">3.2.9.</span> <span class="nav-text"> 长期应付款Long-term payable</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%82%A1%E4%B8%9C%E6%9D%83%E7%9B%8Astakeholders-equity"><span class="nav-number">3.3.</span> <span class="nav-text"> 股东权益Stakeholders’ Equity</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%82%A1%E6%9C%ACcapital-stock"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 股本Capital Stock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B5%84%E6%9C%AC%E5%85%AC%E7%A7%AFcapital-reserve"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 资本公积Capital Reserve</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%88%E4%BD%99%E5%85%AC%E7%A7%AFsurplus-reserve"><span class="nav-number">3.3.3.</span> <span class="nav-text"> 盈余公积Surplus Reserve</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%AA%E5%88%86%E9%85%8D%E5%88%A9%E6%B6%A6retained-earnings"><span class="nav-number">3.3.4.</span> <span class="nav-text"> 未分配利润Retained Earnings</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E6%B6%A6%E8%A1%A8income-statement"><span class="nav-number">4.</span> <span class="nav-text"> 利润表Income Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%90%A5%E4%B8%9A%E6%94%B6%E5%85%A5operating-income"><span class="nav-number">4.1.</span> <span class="nav-text"> 营业收入Operating Income</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%90%A5%E4%B8%9A%E6%88%90%E6%9C%ACoperating-cost"><span class="nav-number">4.2.</span> <span class="nav-text"> 营业成本Operating Cost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%9B%E5%88%A9gross-profit"><span class="nav-number">4.3.</span> <span class="nav-text"> 毛利Gross Profit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%90%A5%E4%B8%9A%E7%A8%8E%E9%87%91%E5%8F%8A%E9%99%84%E5%8A%A0business-tax-and-surcharges"><span class="nav-number">4.4.</span> <span class="nav-text"> 营业税金及附加Business Tax and Surcharges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%90%A5%E4%B8%9A%E8%B4%B9%E7%94%A8operating-expense"><span class="nav-number">4.5.</span> <span class="nav-text"> 营业费用Operating Expense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E8%B4%B9%E7%94%A8administration-expense"><span class="nav-number">4.6.</span> <span class="nav-text"> 管理费用Administration Expense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E8%B4%B9%E7%94%A8financial-expenses"><span class="nav-number">4.7.</span> <span class="nav-text"> 财务费用Financial Expenses</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E6%94%B6%E7%9B%8Ainvestment-income"><span class="nav-number">4.8.</span> <span class="nav-text"> 投资收益Investment Income</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%84%E4%BA%A7%E5%87%8F%E5%80%BC%E7%9A%84%E6%8D%9F%E5%A4%B1impairment-loss-of-asset"><span class="nav-number">4.9.</span> <span class="nav-text"> 资产减值的损失Impairment Loss of Asset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E5%85%81%E4%BB%B7%E5%80%BC%E5%8F%98%E5%8A%A8%E7%9A%84%E6%94%B6%E7%9B%8Agains-on-the-changes-in-the-fair-value"><span class="nav-number">4.10.</span> <span class="nav-text"> 公允价值变动的收益Gains on the Changes in the Fair Value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%90%A5%E4%B8%9A%E5%A4%96%E6%94%B6%E5%85%A5non-operating-revenues"><span class="nav-number">4.11.</span> <span class="nav-text"> 营业外收入Non-operating Revenues</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%90%A5%E4%B8%9A%E5%A4%96%E6%94%AF%E5%87%BAnon-operating-expense"><span class="nav-number">4.12.</span> <span class="nav-text"> 营业外支出Non-operating expense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E8%B4%B4%E6%94%B6%E5%85%A5subsidy-income"><span class="nav-number">4.13.</span> <span class="nav-text"> 补贴收入Subsidy Income</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%80%E5%BE%97%E7%A8%8Eincome-tax"><span class="nav-number">4.14.</span> <span class="nav-text"> 所得税Income Tax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%80%E5%88%A9%E6%B6%A6net-profit"><span class="nav-number">4.15.</span> <span class="nav-text"> 净利润Net Profit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F%E8%A1%A8cash-flow-statement"><span class="nav-number">5.</span> <span class="nav-text"> 现金流量表Cash Flow Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95financial-analysis-method"><span class="nav-number">6.</span> <span class="nav-text"> 财务分析方法Financial Analysis Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E5%9E%8B%E5%88%86%E6%9E%90"><span class="nav-number">6.1.</span> <span class="nav-text"> 同型分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E7%8E%87%E5%88%86%E6%9E%90"><span class="nav-number">6.2.</span> <span class="nav-text"> 比率分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%B0%E9%87%91%E6%B5%81%E5%88%86%E6%9E%90"><span class="nav-number">6.3.</span> <span class="nav-text"> 现金流分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%8B%E5%8A%BF%E5%88%86%E6%9E%90"><span class="nav-number">6.4.</span> <span class="nav-text"> 趋势分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90"><span class="nav-number">6.5.</span> <span class="nav-text"> 比较分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%B1%E5%93%8D%E8%B4%A2%E5%8A%A1%E6%95%B0%E6%8D%AE%E7%94%9A%E8%87%B3%E4%BC%81%E4%B8%9A%E6%88%90%E5%8A%9F%E7%9A%84%E8%A6%81%E7%B4%A0"><span class="nav-number">7.</span> <span class="nav-text"> 影响财务数据甚至企业成功的要素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E7%8E%AF%E5%A2%83"><span class="nav-number">7.1.</span> <span class="nav-text"> 外部环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%98%E7%95%A5%E5%AE%9A%E4%BD%8D"><span class="nav-number">7.2.</span> <span class="nav-text"> 战略定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%98%E7%95%A5%E6%89%A7%E8%A1%8C"><span class="nav-number">7.3.</span> <span class="nav-text"> 战略执行</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/07/30/Financial-Analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          财务分析与决策
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-07-30 22:08:51" itemprop="dateCreated datePublished" datetime="2020-07-30T22:08:51+08:00">2020-07-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:24:33" itemprop="dateModified" datetime="2020-10-12T03:24:33+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%B4%A2%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">财务</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>此处引用知乎大V的话：财务分析所要用到的知识和技能，正规的本科财务教育和注册会计师考试里教的东西基本就绰绰有余了，看更多没有太大的用。<strong>如果说真的要看书，那就多看些拓展知识面和提升思维深度的杂书要多看看。</strong></p>
+<a id="more"></a>
+<p>所以，财务分析技能=财务教育+杂书。针对“财务教育”，推荐学习清华大学肖星老师的“财务分析与决策”公开课。针对“杂书”，并不是说书的质量不行，而是涉猎的领域广，因为不同的企业，业务跨度是很大的，我们要了解企业的业务，才能更深刻的理解人家的财务。</p>
+<p>这里再拓展一个题外话，获取知识或信息的途径：</p>
+<ul>
+<li>书籍上的信息，最靠谱最权威</li>
+<li>互联网上的信息，正确的方法获取优质信息</li>
+<li>业内人士的信息，可遇而不可求</li>
+</ul>
+<p>言归正传，</p>
+<h3 id="财务分析的意义是什么"><a class="markdownIt-Anchor" href="#财务分析的意义是什么"></a> 财务分析的意义是什么？</h3>
+<ul>
+<li>财务分析关乎决策</li>
+<li>财务数据体现企业整体的价值创造过程</li>
+</ul>
+<h3 id="财务分析的素材是报表"><a class="markdownIt-Anchor" href="#财务分析的素材是报表"></a> 财务分析的素材是报表</h3>
+<p>为什么做报表，为什么是三张表？做报表的目的是为了描述公司的经济活动，一个公司做三件事：经营、投资、融资。三张表可以充分描述所有的经济活动，不多不少。</p>
+<h3 id="资产负债表balance-sheet"><a class="markdownIt-Anchor" href="#资产负债表balance-sheet"></a> 资产负债表Balance Sheet</h3>
+<ul>
+<li>描述我们投入的本金变成了什么，它们的价值如何</li>
+<li>资产负债表的左边告诉我们钱拿去做什么了，右边告诉我们钱从哪里来的，总体告诉我们“家底”</li>
+<li>资产负债表左边是资产，右边是负债和股东权益，资产=负债+股东权益</li>
+<li>资产负债表反应的是某个时点的财务状况</li>
+</ul>
+<blockquote>
+<p>股东权益=资产-负债，这个等式描述了“剩余求偿权”，即公司还完债之后，不管是盈是亏，剩下的都是股东的，股东拥有企业所有权</p>
+</blockquote>
+<h4 id="资产assets"><a class="markdownIt-Anchor" href="#资产assets"></a> 资产Assets</h4>
+<h5 id="货币资金cash"><a class="markdownIt-Anchor" href="#货币资金cash"></a> 货币资金Cash</h5>
+<p>这就是钱，无论放在公司的或是放在银行的</p>
+<h5 id="应收帐款accounts-receivable"><a class="markdownIt-Anchor" href="#应收帐款accounts-receivable"></a> 应收帐款Accounts Receivable</h5>
+<p>销售产品的时候，对方不能马上付款，为了不失去客户，或者行业竞争激烈，我们承诺客户可以延期付款，这时候我们获得了向客户收款的权利。所以，应收账款就是收款权利。如果应收帐款比较多，说明这家公司面临的竞争比较激烈。</p>
+<h5 id="其他应收款other-receivables"><a class="markdownIt-Anchor" href="#其他应收款other-receivables"></a> 其他应收款Other Receivables</h5>
+<p>临时周转给别人的资金，没有回报。如，借给朋友的钱 ，周转给员工的备用金。</p>
+<h5 id="预付账款prepaid-accounts"><a class="markdownIt-Anchor" href="#预付账款prepaid-accounts"></a> 预付账款Prepaid Accounts</h5>
+<p>买东西的时候，可能因为这个东西比较紧缺，所以提前向供应商支付了货款，这个时候我们获得向供应商收款的权利。所以，预付账款也是收款权利。</p>
+<h5 id="存货inventory"><a class="markdownIt-Anchor" href="#存货inventory"></a> 存货Inventory</h5>
+<p>原材料、在产品、产成品都叫存货</p>
+<h5 id="待摊费用deferred-expenses"><a class="markdownIt-Anchor" href="#待摊费用deferred-expenses"></a> 待摊费用Deferred Expenses</h5>
+<p>比如，我们一次性买了6万的办公用品，放在库房里准备用6个月。那么这是资产还是费用呢？<br />
+花一笔钱出去换来一个未来有用的东西，这就是资产。如果什么都没留下，那就是费用。显然，这6万的办公用品，在未来6个月都是有用的，所以它是资产。但经历6个月，它逐渐转变为了费用。所以，这笔特殊的资产叫做“待摊费用”。类似的还有，预付租金、预付广告费等</p>
+<h5 id="流动资产current-assets"><a class="markdownIt-Anchor" href="#流动资产current-assets"></a> 流动资产Current Assets</h5>
+<p>以上资产都是“流动资产”。我们说企业经营就是“现金—产品—现金”的周而复始的循环过程，我们一个循环内就可以转换为现金的资产叫做“流动资产”，比如原材料，应收款等。相反，需要多个循环才能转化为现金的资产叫做“非流动资产”，比如厂房、设备等。需要注意的是，以上资产也是按照变成现金的快慢来排列的。</p>
+<h5 id="非流动资产non-current-assets"><a class="markdownIt-Anchor" href="#非流动资产non-current-assets"></a> 非流动资产Non-current Assets</h5>
+<p>需要多个循环才能转化为现金的资产叫做“非流动资产”，比如厂房、设备等。非流动资产包括：固定资产、无形资产</p>
+<h5 id="固定资产fixed-asset"><a class="markdownIt-Anchor" href="#固定资产fixed-asset"></a> 固定资产Fixed Asset</h5>
+<p>“时间长，价值高”才能称作固定资产，一个“杯子”不叫固定资产，因为太便宜了。如果固定资产比较多，说明这个企业是重资产公司。</p>
+<blockquote>
+<p>&quot;人&quot;一般不会作为公司的资产，因为人不是奴隶，不归公司所有。但俱乐部的球星的签约费用，可以作为“待摊费用”在报表中列示。养鸡场的“肉鸡”是“存货”，“蛋鸡”是“固定资产”。</p>
+</blockquote>
+<blockquote>
+<p>大部分企业的报表格式都是固定一致的，但企业的资产结构却各不相同，正因为如此，报表可以反应不同企业的经营类型、状况</p>
+</blockquote>
+<blockquote>
+<p>资产的价值如何确定？我们有两个选择：购买成本和市场售价。我们约定计价准则是：无法确定当前市场价值的资产计价采用“历史成本扣减”，“金融资产”和”投资性的房地产“用“公允价值”计价</p>
+</blockquote>
+<h5 id="无形资产intangible-assets"><a class="markdownIt-Anchor" href="#无形资产intangible-assets"></a> 无形资产Intangible Assets</h5>
+<p>专利权，专有技术，版权，商标权。另外，在中国，“土地使用权”也是无形资产，类似的还有“采矿权”、“探矿权”等</p>
+<h5 id="长期投资long-term-investment"><a class="markdownIt-Anchor" href="#长期投资long-term-investment"></a> 长期投资Long-term Investment</h5>
+<p>参股其他公司、投资子公司、购买债券。长期投资即有股权性质的投资也有债权性质的投资。</p>
+<blockquote>
+<p>资产和财产物资是两个不同的概念，比如，应收款是资产但不是财产物资，我们租别人的东西或代销的产品是财产物资但不是资产<br />
+今天的资产就是未来的成本费用</p>
+</blockquote>
+<h4 id="负债liability"><a class="markdownIt-Anchor" href="#负债liability"></a> 负债Liability</h4>
+<h5 id="短期借款short-term-borrowing"><a class="markdownIt-Anchor" href="#短期借款short-term-borrowing"></a> 短期借款Short-term Borrowing</h5>
+<p>一年之内要偿还的借款</p>
+<h5 id="应付款accounts-payable"><a class="markdownIt-Anchor" href="#应付款accounts-payable"></a> 应付款Accounts Payable</h5>
+<p>收了供应商的货，但是没给供应商钱，我们产生了一个给供应商付款的责任</p>
+<h5 id="其他应付款other-payable"><a class="markdownIt-Anchor" href="#其他应付款other-payable"></a> 其他应付款Other Payable</h5>
+<p>朋友借给我们公司的钱，我们产生了一个对朋友还款的责任</p>
+<h5 id="预收款deposit-received"><a class="markdownIt-Anchor" href="#预收款deposit-received"></a> 预收款Deposit Received</h5>
+<p>我们收了客户的预付款，但没有发货，所以我们产生了一个给客户发货的责任</p>
+<h5 id="其他负债other-liability"><a class="markdownIt-Anchor" href="#其他负债other-liability"></a> 其他负债Other Liability</h5>
+<p>欠员工的工资，欠税务局的税等</p>
+<h5 id="流动负债current-liability"><a class="markdownIt-Anchor" href="#流动负债current-liability"></a> 流动负债Current Liability</h5>
+<p>以上负债都叫做流动负债，下面的负债都是长期负债。流动负债是一年之内要偿还的负债，长期负债是一年后要偿还的负债。</p>
+<h5 id="长期借款long-term-borrowing"><a class="markdownIt-Anchor" href="#长期借款long-term-borrowing"></a> 长期借款Long-term Borrowing</h5>
+<p>一年之后要偿还的借款</p>
+<h5 id="应付债券bond-payable"><a class="markdownIt-Anchor" href="#应付债券bond-payable"></a> 应付债券Bond Payable</h5>
+<p>只有能发行债券的公司才会有这一项，在中国大多数公司没有这一项</p>
+<blockquote>
+<p>责任相关的都是负债，权利相关的都是资产</p>
+</blockquote>
+<h5 id="长期应付款long-term-payable"><a class="markdownIt-Anchor" href="#长期应付款long-term-payable"></a> 长期应付款Long-term payable</h5>
+<p>长期应付款通常跟“租赁”有关，“租赁”分为“经营性租赁”和“融资性租赁”。期限长、金额大叫做“融资性租赁”，否则是“经营性租赁”。对于“融资性租赁”，我们认为公司正在分期付款购买这个资产</p>
+<h4 id="股东权益stakeholders-equity"><a class="markdownIt-Anchor" href="#股东权益stakeholders-equity"></a> 股东权益Stakeholders’ Equity</h4>
+<p>股东权益是永远不需要偿还的项目，因为股东不能随意撤资。股本和资本公积都是外面拿进来的，盈余公积和未分配利润是里面留下来的。</p>
+<h5 id="股本capital-stock"><a class="markdownIt-Anchor" href="#股本capital-stock"></a> 股本Capital Stock</h5>
+<p>如果是股份制有限公司，那么这个项目叫“股本”。如果只是一个有限责任公司，那么这个项目叫“实收资本”。<br />
+股本的结构体现了股东之间的权利分割，股本是非常重要的具有法律意义的概念。</p>
+<h5 id="资本公积capital-reserve"><a class="markdownIt-Anchor" href="#资本公积capital-reserve"></a> 资本公积Capital Reserve</h5>
+<p>在中国成立公司，都需要注册资金，这笔注册资金就是“股本”，如果投进去的钱比注册资金多，多出来的就是“资本公积”。另外，上市公司一定有“资本公积”，因为股票售价一般高于面值，多筹集进来的资金都属于“资本公积”。</p>
+<h5 id="盈余公积surplus-reserve"><a class="markdownIt-Anchor" href="#盈余公积surplus-reserve"></a> 盈余公积Surplus Reserve</h5>
+<p>盈余公积是法律规定不让我们分配的利润</p>
+<h5 id="未分配利润retained-earnings"><a class="markdownIt-Anchor" href="#未分配利润retained-earnings"></a> 未分配利润Retained Earnings</h5>
+<p>未分配利润我们自己不想分配的利润</p>
+<h3 id="利润表income-statement"><a class="markdownIt-Anchor" href="#利润表income-statement"></a> 利润表Income Statement</h3>
+<h4 id="营业收入operating-income"><a class="markdownIt-Anchor" href="#营业收入operating-income"></a> 营业收入Operating Income</h4>
+<p>公司卖了一个产品，获得的收入就是营业收入</p>
+<h4 id="营业成本operating-cost"><a class="markdownIt-Anchor" href="#营业成本operating-cost"></a> 营业成本Operating Cost</h4>
+<p>公司卖掉的产品，也就失去了这个产品，失去的就叫营业成本</p>
+<h4 id="毛利gross-profit"><a class="markdownIt-Anchor" href="#毛利gross-profit"></a> 毛利Gross Profit</h4>
+<p>毛利=营业收入-营业成本</p>
+<h4 id="营业税金及附加business-tax-and-surcharges"><a class="markdownIt-Anchor" href="#营业税金及附加business-tax-and-surcharges"></a> 营业税金及附加Business Tax and Surcharges</h4>
+<p>只要有了业务就需要交的税，就叫流转税。<br />
+在中国，营业税(价内税)、增值税(价外税)都属于流转税。但只有营业税列示在利润表中，增值税是经营者代替税务局收消费者的税，也就是营业税是经营者承担的成本，增值税是消费者承担的成本，所以，利润表作为经营者的报表，注定不能包含增值税。那么经营者代收的增值税应该体现在资产负债表的应交税金里。</p>
+<h4 id="营业费用operating-expense"><a class="markdownIt-Anchor" href="#营业费用operating-expense"></a> 营业费用Operating Expense</h4>
+<p>跟销售环节相关的费用，如广告费、运费、仓库费、销售的工资、销售部门的各种开支</p>
+<h4 id="管理费用administration-expense"><a class="markdownIt-Anchor" href="#管理费用administration-expense"></a> 管理费用Administration Expense</h4>
+<p>跟管理环节相关的费用，如管理部门的各种开支、行政开支、办公楼的折旧</p>
+<blockquote>
+<p>销售人员的工资属于营业费用，管理人员的工资属于管理费用，工人的工资属于生产成本</p>
+</blockquote>
+<h4 id="财务费用financial-expenses"><a class="markdownIt-Anchor" href="#财务费用financial-expenses"></a> 财务费用Financial Expenses</h4>
+<p>财务费用就是我们的利息</p>
+<h4 id="投资收益investment-income"><a class="markdownIt-Anchor" href="#投资收益investment-income"></a> 投资收益Investment Income</h4>
+<p>如投资子公司获得的收益</p>
+<h4 id="资产减值的损失impairment-loss-of-asset"><a class="markdownIt-Anchor" href="#资产减值的损失impairment-loss-of-asset"></a> 资产减值的损失Impairment Loss of Asset</h4>
+<p>因为大多数资产按照历史成本计价，但是如果这个资产发生了减值，要把这个减值扣掉。一旦资产发生了减值，利润同样收到影响。</p>
+<h4 id="公允价值变动的收益gains-on-the-changes-in-the-fair-value"><a class="markdownIt-Anchor" href="#公允价值变动的收益gains-on-the-changes-in-the-fair-value"></a> 公允价值变动的收益Gains on the Changes in the Fair Value</h4>
+<p>金融资产和投资性房地产都是按照公允价值计价的，公允价值也是随时间波动的，将当前时点和上一个时点进行比较，就是公允价值的收益或损失</p>
+<h4 id="营业外收入non-operating-revenues"><a class="markdownIt-Anchor" href="#营业外收入non-operating-revenues"></a> 营业外收入Non-operating Revenues</h4>
+<p>与营业不相干的收入，偶然导致，不可持续，如存货盘盈、变卖固定资产的收入、奖励、赔偿等</p>
+<h4 id="营业外支出non-operating-expense"><a class="markdownIt-Anchor" href="#营业外支出non-operating-expense"></a> 营业外支出Non-operating expense</h4>
+<p>与营业不相干的支出，偶然导致，不可持续，如存货盘亏、天灾人祸导致的损失等</p>
+<blockquote>
+<p>我们区分营业内和营业外就是区分可持续与不可持续项目，这样有助于预测企业未来的盈利能力</p>
+</blockquote>
+<h4 id="补贴收入subsidy-income"><a class="markdownIt-Anchor" href="#补贴收入subsidy-income"></a> 补贴收入Subsidy Income</h4>
+<p>中国特色的政府补贴、汇兑损益等</p>
+<h4 id="所得税income-tax"><a class="markdownIt-Anchor" href="#所得税income-tax"></a> 所得税Income Tax</h4>
+<p>中国的所得税是“应税所得”的25%，注意不是“利润总额”的25%，</p>
+<h4 id="净利润net-profit"><a class="markdownIt-Anchor" href="#净利润net-profit"></a> 净利润Net Profit</h4>
+<p>利润总额-所得税=净利润</p>
+<blockquote>
+<p>利润表就像一个漏斗，进去的是收入，出来的是利润，中间是各种损耗<br />
+收入-所有成本费用=利润<br />
+利润表不仅告诉我们公司现在赚了多少钱，并且形成对公司未来盈利能力预期的基础<br />
+利润表是个时段概念<br />
+收入不一定要收到现金，相反亦然，比如应收款就不是现金，收到预付款不是收入而是负债<br />
+费用不一定要付出现金，相反亦然，比如固定资产折旧不是现金，预付款不是费用而是资产<br />
+收入-成本费用=利润；收到的现金-付出的现金=现金流</p>
+</blockquote>
+<blockquote>
+<p>生产成本(原材料、人工、制造成本)最终表现为“在产品”和“产成品”，记录为资产负债表中的存货项目，而利润表中的成本(失去产品的代价)是营业成本，营业成本是生产成本的一部分，即卖掉的那部分生产成本。</p>
+</blockquote>
+<blockquote>
+<p>营业成本属于生产环节，营业费用属于销售环节。营业成本和营业费用没有关联关系。</p>
+</blockquote>
+<blockquote>
+<p>生产成本=固定成本+变动成本。固定成本即在一定的产能之内，无论生产多少产品，固定成本的总量是不变的，如厂房设备的折旧即是固定成本，原材料、水、电等属于变动成本。重资产公司的固定成本一般较高，但提高产量会摊薄固定成本，导致营业成本下降，毛利提高，但高产量并不一定意味着高销量，可能提高了库存积压。</p>
+</blockquote>
+<blockquote>
+<p>研发部门在公司内部，开支记作管理费用；研发部门独立于公司存在，(外购技术)开支记作无形资产</p>
+</blockquote>
+<blockquote>
+<p><strong>资产负债表和利润表之间关系</strong><br />
+利润表中的成本和费用分别对应在资产负债表中的存货和资金项目扣减；利润表中的利润分配后的剩余部分记作资产负债表中的未分配利润<br />
+资产负债表中的资产减值也会对应在利润表中产生费用项目，从而影响最终利润</p>
+</blockquote>
+<h3 id="现金流量表cash-flow-statement"><a class="markdownIt-Anchor" href="#现金流量表cash-flow-statement"></a> 现金流量表Cash Flow Statement</h3>
+<p>记录“收到钱”和“付出钱”的情况，其实就是个流水账，只不过按照经营、投资、融资三个类型记录。现金流量表告诉我们现金的来龙去脉。它就是在描述资产负债表上的货币资金产生变化的原因。通过现金流量表可以洞察企业的经营风险。</p>
+<p>企业的13项基本经济活动记录现金流量表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">资金流动</th>
+<th style="text-align:left">活动</th>
+<th style="text-align:center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">3200</td>
+<td style="text-align:left">股东给公司投钱</td>
+<td style="text-align:center">Financing +</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">5100</td>
+<td style="text-align:left">公司从银行借钱</td>
+<td style="text-align:center">Financing +</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">-5700</td>
+<td style="text-align:left">购置厂房设备</td>
+<td style="text-align:center">Investment -</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">-150</td>
+<td style="text-align:left">购买土地使用权</td>
+<td style="text-align:center">Investment -</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">-1600</td>
+<td style="text-align:left">采购原材料</td>
+<td style="text-align:center">Operation -</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">-1200</td>
+<td style="text-align:left">生产(人工、水、电、燃气等)</td>
+<td style="text-align:center">Operation -</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">3000</td>
+<td style="text-align:left">销售收入</td>
+<td style="text-align:center">Operation +</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">-150</td>
+<td style="text-align:left">预付给供应商</td>
+<td style="text-align:center">Operation -</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">-400</td>
+<td style="text-align:left">支付工资</td>
+<td style="text-align:center">Operation -</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">-50</td>
+<td style="text-align:left">研发费用</td>
+<td style="text-align:center">Operation -</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">-130</td>
+<td style="text-align:left">偿还银行贷款的利息</td>
+<td style="text-align:center">Financing -</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">-100</td>
+<td style="text-align:left">支付所得税</td>
+<td style="text-align:center">Operation -</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">-100</td>
+<td style="text-align:left">给股东分配利润</td>
+<td style="text-align:center">Financing -</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>利润表主要描述经营活动，资产负债表主要描述投资和融资行为，而现金流量表从风险角度记录所有经济活动</p>
+</blockquote>
+<blockquote>
+<p>现金流量表描述企业能不能活下去，风险的视角；资产负债表和利润表描述企业如果能够活下去的话，会是怎样的，收益的视角</p>
+</blockquote>
+<h3 id="财务分析方法financial-analysis-method"><a class="markdownIt-Anchor" href="#财务分析方法financial-analysis-method"></a> 财务分析方法Financial Analysis Method</h3>
+<h4 id="同型分析"><a class="markdownIt-Anchor" href="#同型分析"></a> 同型分析</h4>
+<p>结构分析，报表中每个项目占的比重</p>
+<h4 id="比率分析"><a class="markdownIt-Anchor" href="#比率分析"></a> 比率分析</h4>
+<p>报表内/间，数字加减乘除，得出各种比率</p>
+<blockquote>
+<p>净利润率(净利润/收入)反应的是企业的经济效益高低<br />
+总资产的周转率(收入/总资产)反应的是企业的经济效率高低，营运能力<br />
+投资回报(净利润/总资产)=效益X效率，盈利能力</p>
+</blockquote>
+<blockquote>
+<p>周转率反应企业的<strong>营运能力</strong>，除了总资产的周转率，我们还可以计算各个资产对应的周转率<br />
+某项资产的周转率=收入(成本)/某资产在一年中的平均水平<br />
+周转率反应的是资产一年中循环了几次，进而可以知道资产周转的周期</p>
+</blockquote>
+<blockquote>
+<p>短期偿债能力，流动比率=流动资产/短期负债，速动比率=(流动资产-存货)/流动负债；<br />
+长期偿债能力，利息收入倍数=息税前收益/利息费用，资产负债率=总负债/总资产=财务杠杆，这种计算其实描述长期偿债能力不一定准确，更适合描述整体偿债能力</p>
+</blockquote>
+<h4 id="现金流分析"><a class="markdownIt-Anchor" href="#现金流分析"></a> 现金流分析</h4>
+<p>略</p>
+<h4 id="趋势分析"><a class="markdownIt-Anchor" href="#趋势分析"></a> 趋势分析</h4>
+<p>同一公司各年度财务数据的比较分析</p>
+<h4 id="比较分析"><a class="markdownIt-Anchor" href="#比较分析"></a> 比较分析</h4>
+<p>不同公司财务数据的比较</p>
+<h3 id="影响财务数据甚至企业成功的要素"><a class="markdownIt-Anchor" href="#影响财务数据甚至企业成功的要素"></a> 影响财务数据甚至企业成功的要素</h3>
+<p>这些要素会影响财务数据，相应地也可以通过财务数据分析这些要素对企业的影响</p>
+<h4 id="外部环境"><a class="markdownIt-Anchor" href="#外部环境"></a> 外部环境</h4>
+<p>行业分析：“五力图”分析企业盈利能力，“五力图”分成两部分：行业内部竞争和上下游产业链关系</p>
+<h4 id="战略定位"><a class="markdownIt-Anchor" href="#战略定位"></a> 战略定位</h4>
+<p>不同的战略类型：成本领先战略(薄利多销)、差异化战略(产品/服务/送货/品牌)<br />
+成本领先战略一般对应着“低毛利，高周转”，即牺牲效益提高效率<br />
+差异化战略一般对应着“高毛利，低周转”，即牺牲效率提高效益</p>
+<blockquote>
+<p>一个企业的财务数据，除了一定带着它所在行业的烙印之外，也一定带着自身的战略选择的烙印，除此之外还能够表现它的战略执行情况</p>
+</blockquote>
+<h4 id="战略执行"><a class="markdownIt-Anchor" href="#战略执行"></a> 战略执行</h4>
+<blockquote>
+<p>什么叫“赚钱”？”赚钱“不仅意味着有利润，还要利润率高于及格线？如何评估这个及格线？<br />
+对于债权人，利润率要高于利率；对于股东，利润率要高于股东资金的机会成本，机会成本可以是行业的平均水平；加权平均资本成本是衡量企业赚不赚钱的基准</p>
+</blockquote>
+<blockquote>
+<p>经济利润的真实含义是：它比这个行业平均盈利水平多赚了多少钱，也是为股东真正赚到的钱</p>
+</blockquote>
+<blockquote>
+<p>怎么“赚钱”？总资产报酬率=效益X效率，选择效益或效率的提升，并执行这种选择，就是企业的战略定位和战略执行</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/07/30/Financial-Analysis/" title="财务分析与决策">https://ponysong3.top/2020/07/30/Financial-Analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag"># 企业</a>
+              <a href="/tags/%E8%B4%A2%E5%8A%A1/" rel="tag"># 财务</a>
+              <a href="/tags/%E5%88%86%E6%9E%90/" rel="tag"># 分析</a>
+              <a href="/tags/%E6%8A%A5%E8%A1%A8/" rel="tag"># 报表</a>
+              <a href="/tags/%E5%86%B3%E7%AD%96/" rel="tag"># 决策</a>
+              <a href="/tags/%E7%BB%8F%E8%90%A5/" rel="tag"># 经营</a>
+              <a href="/tags/%E8%B5%84%E4%BA%A7/" rel="tag"># 资产</a>
+              <a href="/tags/%E8%B4%9F%E5%80%BA/" rel="tag"># 负债</a>
+              <a href="/tags/%E5%88%A9%E6%B6%A6/" rel="tag"># 利润</a>
+              <a href="/tags/%E7%8E%B0%E9%87%91%E6%B5%81/" rel="tag"># 现金流</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/17/Financial-Study/" rel="prev" title="财经笔记">
+                  <i class="fa fa-chevron-left"></i> 财经笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/08/03/StockAnalysis-ShortTerm/" rel="next" title="股价短线分析">
+                  股价短线分析 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.top","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="我对Markdown插入图片和视频，一直有两个痛点：1. 外链插入素材，不是所有的素材都能获得外链 2.本地插入素材，则素材需放到本地，日积月累会占用主机空间。而目前看到的所有Markdown插入图片和视频的指导都没有完全解决我的痛点。今天偶然看到有大神在用无限量的谷歌云盘，突然来了灵感：如果我把这个无限量云盘挂载到VPS主机，那我想存多少素材就存多少，而Markdown便可以从本地插入素材，这是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS利用谷歌云盘无限量存储Hexo博客图片与视频">
+<meta property="og:url" content="https://ponysong3.top/2020/04/30/Google-Drive-Mount-on-VPS/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="我对Markdown插入图片和视频，一直有两个痛点：1. 外链插入素材，不是所有的素材都能获得外链 2.本地插入素材，则素材需放到本地，日积月累会占用主机空间。而目前看到的所有Markdown插入图片和视频的指导都没有完全解决我的痛点。今天偶然看到有大神在用无限量的谷歌云盘，突然来了灵感：如果我把这个无限量云盘挂载到VPS主机，那我想存多少素材就存多少，而Markdown便可以从本地插入素材，这是">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ponysong3.top/images/gsuite.png">
+<meta property="og:image" content="https://ponysong3.top/images/shareddrive.png">
+<meta property="og:image" content="https://ponysong3.top/images/film.jpg">
+<meta property="article:published_time" content="2020-04-30T12:40:38.000Z">
+<meta property="article:modified_time" content="2020-10-11T19:05:29.940Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="VPS">
+<meta property="article:tag" content="rclone">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Google Drive">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ponysong3.top/images/gsuite.png">
+
+
+<link rel="canonical" href="https://ponysong3.top/2020/04/30/Google-Drive-Mount-on-VPS/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>VPS利用谷歌云盘无限量存储Hexo博客图片与视频 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">95</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7%E8%B0%B7%E6%AD%8C%E4%BA%91%E7%9B%98"><span class="nav-number">1.</span> <span class="nav-text"> 申请谷歌云盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E4%BA%91%E7%9B%98"><span class="nav-number">2.</span> <span class="nav-text"> 挂载云盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E6%94%BE%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E4%B8%8E%E8%A7%86%E9%A2%91"><span class="nav-number">3.</span> <span class="nav-text"> 存放博客图片与视频</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">95</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.top/2020/04/30/Google-Drive-Mount-on-VPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VPS利用谷歌云盘无限量存储Hexo博客图片与视频
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-04-30 20:40:38" itemprop="dateCreated datePublished" datetime="2020-04-30T20:40:38+08:00">2020-04-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-12 03:05:29" itemprop="dateModified" datetime="2020-10-12T03:05:29+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/VPS/" itemprop="url" rel="index"><span itemprop="name">VPS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>我对Markdown插入图片和视频，一直有两个痛点：1. 外链插入素材，不是所有的素材都能获得外链 2.本地插入素材，则素材需放到本地，日积月累会占用主机空间。而目前看到的所有Markdown插入图片和视频的指导都没有完全解决我的痛点。今天偶然看到有大神在用无限量的谷歌云盘，突然来了灵感：如果我把这个无限量云盘挂载到VPS主机，那我想存多少素材就存多少，而Markdown便可以从本地插入素材，这是一举两得的方法。于是乎，就有了下面这篇指导文章。</p>
+<a id="more"></a>
+<h2 id="申请谷歌云盘"><a class="markdownIt-Anchor" href="#申请谷歌云盘"></a> 申请谷歌云盘</h2>
+<p>某宝上可以申请个无限容量谷歌云盘，称之为GSuite账户。然后还要另外自己注册一个谷歌账户，称之为Google账户。通过GSuite账户给Google账户共享一个无限容量的团队盘，并给予管理员权限。整体下来的结果就是这个样子。</p>
+<p><img src="/images/gsuite.png" alt="gsuite pic" /></p>
+<p><img src="/images/shareddrive.png" alt="shareddrive pic" /></p>
+<h2 id="挂载云盘"><a class="markdownIt-Anchor" href="#挂载云盘"></a> 挂载云盘</h2>
+<p>下面的命令是在CentOS7上运行的，请按需参考:</p>
+<ul>
+<li>安装依赖</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install wget unzip screen fuse fuse-devel</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装rclone</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://rclone.org/install.sh | sudo bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>rclone挂载云盘</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">[root@vultrguest ~]<span class="comment"># rclone config</span></span><br><span class="line">2020/05/19 21:55:59 NOTICE: Config file <span class="string">&quot;/root/.config/rclone/rclone.conf&quot;</span> not found - using defaults</span><br><span class="line">No remotes found - make a new one</span><br><span class="line">n) New remote</span><br><span class="line">s) Set configuration password</span><br><span class="line">q) Quit config</span><br><span class="line">n/s/q&gt; n</span><br><span class="line"></span><br><span class="line">name&gt; gdrive</span><br><span class="line"></span><br><span class="line">Type of storage to configure.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">&quot;&quot;</span>).</span><br><span class="line">Choose a number from below, or <span class="built_in">type</span> <span class="keyword">in</span> your own value</span><br><span class="line"> 1 / 1Fichier</span><br><span class="line">   \ <span class="string">&quot;fichier&quot;</span></span><br><span class="line"> 2 / Alias <span class="keyword">for</span> an existing remote</span><br><span class="line">   \ <span class="string">&quot;alias&quot;</span></span><br><span class="line"> ……</span><br><span class="line">36 / premiumize.me</span><br><span class="line">   \ <span class="string">&quot;premiumizeme&quot;</span></span><br><span class="line">Storage&gt; 13</span><br><span class="line"></span><br><span class="line">Google Application Client Id</span><br><span class="line">Setting your own is recommended.</span><br><span class="line">See https://rclone.org/drive/<span class="comment">#making-your-own-client-id for how to create your own.</span></span><br><span class="line">If you leave this blank, it will use an internal key <span class="built_in">which</span> is low performance.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">&quot;&quot;</span>).</span><br><span class="line">client_id&gt; 直接回车</span><br><span class="line"></span><br><span class="line">Google Application Client Secret</span><br><span class="line">Setting your own is recommended.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">&quot;&quot;</span>).</span><br><span class="line">client_secret&gt; 直接回车</span><br><span class="line"></span><br><span class="line">scope&gt; 1</span><br><span class="line"></span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">&quot;&quot;</span>).</span><br><span class="line">root_folder_id&gt; 直接回车</span><br><span class="line"></span><br><span class="line">Service Account Credentials JSON file path </span><br><span class="line">Leave blank normally.</span><br><span class="line">Needed only <span class="keyword">if</span> you want use SA instead of interactive login.</span><br><span class="line">Enter a string value. Press Enter <span class="keyword">for</span> the default (<span class="string">&quot;&quot;</span>).</span><br><span class="line">service_account_file&gt; 直接回车</span><br><span class="line"></span><br><span class="line">Edit advanced config? (y/n)</span><br><span class="line">y) Yes</span><br><span class="line">n) No (default)</span><br><span class="line">y/n&gt; 直接回车</span><br><span class="line"></span><br><span class="line">Remote config</span><br><span class="line">Use auto config?</span><br><span class="line"> * Say Y <span class="keyword">if</span> not sure</span><br><span class="line"> * Say N <span class="keyword">if</span> you are working on a remote or headless machine</span><br><span class="line">y) Yes (default)</span><br><span class="line">n) No</span><br><span class="line">y/n&gt; n</span><br><span class="line"></span><br><span class="line">Please go to the following link: https://accounts.google.com/o/oauth2/auth?axxx</span><br><span class="line">Log <span class="keyword">in</span> and authorize rclone <span class="keyword">for</span> access</span><br><span class="line">Enter verification code&gt; 按照上述英文提示获取验证码，粘贴到这里</span><br><span class="line">Configure this as a team drive?</span><br><span class="line">y) Yes</span><br><span class="line">n) No (default)</span><br><span class="line">y/n&gt; y</span><br><span class="line"></span><br><span class="line">Fetching team drive list...</span><br><span class="line">Choose a number from below, or <span class="built_in">type</span> <span class="keyword">in</span> your own value</span><br><span class="line"> 1 / GSuite_Share</span><br><span class="line">   \ “5erfUWVJUYsX4CUk6HuiP”</span><br><span class="line">Enter a Team Drive ID&gt; 1</span><br><span class="line"></span><br><span class="line">Current remotes:</span><br><span class="line"></span><br><span class="line">Name                 Type</span><br><span class="line">====                 ====</span><br><span class="line">gdrive               drive</span><br><span class="line"></span><br><span class="line">e) Edit existing remote</span><br><span class="line">n) New remote</span><br><span class="line">d) Delete remote</span><br><span class="line">r) Rename remote</span><br><span class="line">c) Copy remote</span><br><span class="line">s) Set configuration password</span><br><span class="line">q) Quit config</span><br><span class="line">e/n/d/r/c/s/q&gt; q</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rclone mount gdrive: /gdrive/disk/ --allow-other --allow-non-empty --vfs-cache-mode writes &amp;</span><br></pre></td></tr></table></figure>
+<p>到这里就挂载完成了，最后一步的命令解释如下：</p>
+<p>rclone mount 配置名称:文件夹名 /gdrive/disk/ --allow-other --allow-non-empty --vfs-cache-mode writes &amp;<br />
+文件夹名可留空，文件夹名后是空格，然后是提前创建好的挂载路径。如果填写了文件夹名，那么网盘里会自动创建文件夹，所有/gdrive/disk/路径下的文件都会上传到网盘的这个文件夹里。</p>
+<p>最后使用df -h命令查看是否成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@vultrguest gdrive]<span class="comment"># df -h</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">devtmpfs        900M     0  900M   0% /dev</span><br><span class="line">tmpfs           915M     0  915M   0% /dev/shm</span><br><span class="line">tmpfs           915M   97M  819M  11% /run</span><br><span class="line">tmpfs           915M     0  915M   0% /sys/fs/cgroup</span><br><span class="line">/dev/vda1        63G  4.3G   56G   8% /</span><br><span class="line">tmpfs           183M     0  183M   0% /run/user/0</span><br><span class="line">gdrive:         1.0P     0  1.0P   0% /gdrive/disk</span><br><span class="line"><span class="comment">##这里1.0P就代表无限空间</span></span><br></pre></td></tr></table></figure>
+<h2 id="存放博客图片与视频"><a class="markdownIt-Anchor" href="#存放博客图片与视频"></a> 存放博客图片与视频</h2>
+<p>把自己的图片、视频等材料拖拽到谷歌云盘，相应的可以在/gdrive/disk下面找到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@vultrguest ~]<span class="comment"># ll /gdrive/disk/blog_images/</span></span><br><span class="line">total 52049</span><br><span class="line">-rw-r--r--. 1 root root   888541 May 20 21:58 film.jpg</span><br><span class="line">-rw-r--r--. 1 root root   685815 May 20 17:32 gsuite.png</span><br><span class="line">-rw-r--r--. 1 root root   146799 May 20 17:32 shareddrive.png</span><br><span class="line">-rw-r--r--. 1 root root 18963922 May 20 17:32 the-sound-of-film.mp4</span><br><span class="line">-rw-r--r--. 1 root root 32611798 May 20 17:32 vidsplay-winter-stream-and-trees.mp4</span><br></pre></td></tr></table></figure>
+<p>在博客目录blog/source/images路径下，分别为云盘的文件创建软连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@vultrguest images]<span class="comment"># ll</span></span><br><span class="line">total 4</span><br><span class="line">lrwxrwxrwx. 1 root root 33 May 20 22:02 film.jpg -&gt; /gdrive/disk/blog_images/film.jpg</span><br><span class="line">lrwxrwxrwx. 1 root root 35 May 20 20:53 gsuite.png -&gt; /gdrive/disk/blog_images/gsuite.png</span><br><span class="line">lrwxrwxrwx. 1 root root 40 May 20 20:54 shareddrive.png -&gt; /gdrive/disk/blog_images/shareddrive.png</span><br><span class="line">lrwxrwxrwx. 1 root root 46 May 20 20:55 the-sound-of-film.mp4 -&gt; /gdrive/disk/blog_images/the-sound-of-film.mp4</span><br><span class="line">lrwxrwxrwx. 1 root root 61 May 20 20:55 vidsplay-winter-stream-and-trees.mp4 -&gt; /gdrive/disk/blog_images/vidsplay-winter-stream-and-trees.mp4</span><br></pre></td></tr></table></figure>
+<p>这样，博客内容就可以直接插入/images/软连接了，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![测试图片](/images/film.jpg)</span><br></pre></td></tr></table></figure>
+<p>效果如下</p>
+<p><img src="/images/film.jpg" alt="测试图片" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.top/2020/04/30/Google-Drive-Mount-on-VPS/" title="VPS利用谷歌云盘无限量存储Hexo博客图片与视频">https://ponysong3.top/2020/04/30/Google-Drive-Mount-on-VPS/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/VPS/" rel="tag"># VPS</a>
+              <a href="/tags/rclone/" rel="tag"># rclone</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Google-Drive/" rel="tag"># Google Drive</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/25/Hello-Dubai-Hexo/" rel="prev" title="Dubai: Hexo博客生成的地方">
+                  <i class="fa fa-chevron-left"></i> Dubai: Hexo博客生成的地方
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/04/Markdown-Study/" rel="next" title="Markdown浅析">
+                  Markdown浅析 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
