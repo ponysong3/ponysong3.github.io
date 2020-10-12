@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://ponysong3.github.io/2020/10/12/test/</loc>
+    <loc>https://ponysong3.github.io/2020/10/15/soft-router/</loc>
     
     <lastmod>2020-10-12</lastmod>
     
@@ -767,6 +767,20 @@
   </url>
   
   <url>
+    <loc>https://ponysong3.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</loc>
+    <lastmod>2020-10-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ponysong3.github.io/tags/CPU/</loc>
+    <lastmod>2020-10-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ponysong3.github.io/tags/%E4%BC%81%E4%B8%9A/</loc>
     <lastmod>2020-10-12</lastmod>
     <changefreq>daily</changefreq>
@@ -966,6 +980,13 @@
   
   <url>
     <loc>https://ponysong3.github.io/categories/iOS/</loc>
+    <lastmod>2020-10-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ponysong3.github.io/categories/%E8%BD%AF%E8%B7%AF%E7%94%B1/</loc>
     <lastmod>2020-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
