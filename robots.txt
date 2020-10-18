@@ -4,5 +4,6 @@ Allow: /archives/
 Allow: /categories/
 Allow: /tags/
 Allow: /about/
+Allow: /images/manifest.json
 
 Sitemap: https://ponysong3.github.io/sitemap.xml
