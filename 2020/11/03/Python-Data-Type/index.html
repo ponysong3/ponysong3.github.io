@@ -32,7 +32,7 @@
 <meta property="og:description" content="重点介绍两种基本数据类型：数字类型和字符串类型。对于每种类型，分别介绍其表示方式和操作方式。比如，数字可以表示成二进制、八进制、十六进制形式，字符串可以用单引号、双引号、三引号表示；数字可以通过操作符或操作函数进行运算，字符串可以通过操作符、操作函数、对象方法进行编辑。更普遍地，任何其他数据类型都有其“表示方式”和“操作方式”两方面。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-03T13:58:12.000Z">
-<meta property="article:modified_time" content="2021-01-23T08:53:46.469Z">
+<meta property="article:modified_time" content="2021-01-23T13:49:28.822Z">
 <meta property="article:author" content="Pony">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="整数">
@@ -296,7 +296,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-01-23 16:53:46" itemprop="dateModified" datetime="2021-01-23T16:53:46+08:00">2021-01-23</time>
+        <time title="Modified: 2021-01-23 21:49:28" itemprop="dateModified" datetime="2021-01-23T21:49:28+08:00">2021-01-23</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -524,7 +524,7 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 </tr>
 </tbody>
 </table>
-<details class="note info no-icon"><summary><p>知识点扩展</p>
+<details class="note primary"><summary><p>知识点扩展</p>
 </summary>
 <p><strong>eval(x)</strong><br />
 eval(x)与str(x)相反，eval(x)是将x转化为python能够直接运行的语句，如</p>
@@ -583,12 +583,12 @@ Python字符串中每个字符都是Unicode编码字符</p>
 </tr>
 </tbody>
 </table>
-<details class="note success no-icon"><summary><p>一个特殊的字符串操作方法—字符串格式化方法</p>
+<details class="note primary"><summary><p>一个特殊的字符串操作方法—字符串格式化方法</p>
 </summary>
 <p>字符串格式化使用.format()方法，用法为：&lt;带有{槽}的字符串&gt;.format(&lt;逗号分隔的参数&gt;)<br />
 {槽}内部对格式化的控制方式如下表：</p>
 <table>
-  <tr>
+  <tr style="font-weight:bold">
   	<td>参数序号</td>
     <td>:</td>
     <td>填充</td>
@@ -618,7 +618,91 @@ Python字符串中每个字符都是Unicode编码字符</p>
     <td colspan="3">"{:,.5f}".format(1234567.321) 结果为 '1,234,567.32100'</td>
   </tr>
 </table>
-
+</details>
+<details class="note success"><summary><p>通过Time库练习数字类型和字符串类型的操作</p>
+</summary>
+<p>为了避免重复造轮子，Python和第三方封装了很多库供我们调用，其中time库是Python中处理时间的标准库。该库中的函数可以分成三种：</p>
+<table>
+<tr style="font-weight:bold">
+	<td>三种</td>
+	<td>函数</td>
+	<td>描述</td>
+</tr>
+<tr>
+	<td rowspan="6">时间获取</td>
+	<td>time()</td>
+  <td>获取当前时间戳，即计算机内部时间值，浮点数</br>
+  >>> time.time() 结果为 1611404718.4370959
+  </td>
+</tr>
+<tr>
+	<td>gmtime()</td>
+  <td>时间戳转为计算机可处理的时间格式，UTC时间，不传参则返回当前UTC时间</br>
+  >>> time.gmtime(1600017509.0) 结果为 time.struct_time(tm_year=2020, tm_mon=9, tm_mday=13, tm_hour=17, tm_min=18, tm_sec=29, tm_wday=6, tm_yday=257, tm_isdst=0)
+  </td>
+</tr>
+<tr>
+	<td>localtime()</td>
+  <td>时间戳转为计算机可处理的时间格式，local时间，不传参则返回当前local时间</br>
+  >>> time.localtime(1600017509.0) 结果为 time.struct_time(tm_year=2020, tm_mon=9, tm_mday=13, tm_hour=21, tm_min=18, tm_sec=29, tm_wday=6, tm_yday=257, tm_isdst=0)
+  </td>
+</tr>
+<tr>
+	<td>ctime()</td>
+  <td>时间戳转为人类可识别的时间字符串，不传参则返回当前本地时间</br>
+  >>> time.ctime() 结果为 'Sun Sep 13 21:18:29 2020'
+  </td>
+</tr>
+<tr>
+	<td>asctime()</td>
+  <td>将计算机可处理的时间格式转化为人类可识别的字符串</br>
+  >>> time.asctime(time.localtime())+"="+time.ctime() 结果为 'Sun Sep 13 21:18:29 2020=Sun Sep 13 21:18:29 2020'
+  </td>
+</tr>
+<tr>
+	<td>mktime()</td>
+  <td>将计算机可处理的时间格式转化为时间戳</br>
+  >>> time.mktime(time.localtime()) 结果为 1600017509.0
+  </td>
+</tr>
+<tr>
+	<td rowspan="2">时间格式化</td>
+	<td>strftime(format, t)</td>
+  <td>format是格式化模版字符串，用来自定义输出效果，t是计算机可处理时间格式</br>
+  >>> time.strftime("%Y-%m-%d") 结果为 '2020-09-13'
+  </td>
+</tr>
+<tr>
+	<td>strptime(string, format)</td>
+  <td>string是字符串形式的时间，format是格式化模版字符串用来定义输入效果</br>
+  >>> time.strptime("2020-09-13 12:12:12", "%Y-%m-%d %H:%M:%S") 结果为 time.struct_time(tm_year=2020, tm_mon=9, tm_mday=13, tm_hour=12, tm_min=12, tm_sec=12, tm_wday=6, tm_yday=257, tm_isdst=-1)
+  </td>
+</tr>
+<tr>
+	<td rowspan="2">程序计时</td>
+	<td>perf_counter()</td>
+  <td>返回一个CPU级别的精确时间计数值，单位为秒，由于这个计数值起点不确定，连续调用差值才有意义</br>
+  >>> start=time.perf_counter()</br>
+	>>> end=time.perf_counter()</br>
+	>>> end-start</br>
+	11.350346330999855
+  </td>
+</tr>
+<tr>
+	<td>sleep(s)</td>
+  <td>让程序休眠s秒，s可以是浮点数</br>
+	>>> def wait(s):<br/>
+...     start=time.perf_counter()<br/>
+...     time.sleep(s)<br/>
+...     end=time.perf_counter()<br/>
+...     print("休眠{:.2f}秒结束".format(s))<br/>
+	>>> wait(3)<br/>
+	休眠3.00秒结束
+  </td>
+</tr>
+</table>
+<p><strong>实例练习</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">scale = <span class="number">50</span></span><br><span class="line">start = time.perf_counter()</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;开始执行&#x27;</span>.center(scale//<span class="number">2</span>, <span class="string">&#x27;-&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(scale+<span class="number">1</span>):</span><br><span class="line">	a = <span class="string">&#x27;*&#x27;</span> * i</span><br><span class="line">	b = <span class="string">&#x27;.&#x27;</span> * (scale-i)</span><br><span class="line">	c = i/scale * <span class="number">100</span></span><br><span class="line">	end = time.perf_counter()</span><br><span class="line">	dur = end - start</span><br><span class="line">	print(<span class="string">&quot;\r&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;</span>.format(c, a, b, dur), end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">	time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;\n&#x27;</span>+<span class="string">&#x27;执行结束&#x27;</span>.center(scale//<span class="number">2</span>, <span class="string">&#x27;-&#x27;</span>))</span><br></pre></td></tr></table></figure>
 </details>
 
     </div>
