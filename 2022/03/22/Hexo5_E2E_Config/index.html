@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#7a2549">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#7a2549">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="Hexo 5.0做了较大更新，最主要的变化是hexo5.0和next支持源码与配置隔离，即在指定目录下新增配置文件，修改该配置文件即可覆盖源码里面的配置，这样可以有效避免修改源码，以后可以放心大胆升级hexo和next，而不用担心升级覆盖源码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Hexo 5.0搭建个人博客">
+<meta property="og:url" content="https://ponysong3.github.io/2022/03/22/Hexo5_E2E_Config/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="Hexo 5.0做了较大更新，最主要的变化是hexo5.0和next支持源码与配置隔离，即在指定目录下新增配置文件，修改该配置文件即可覆盖源码里面的配置，这样可以有效避免修改源码，以后可以放心大胆升级hexo和next，而不用担心升级覆盖源码。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-22T13:58:33.000Z">
+<meta property="article:modified_time" content="2022-07-02T15:21:19.332Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Next">
+<meta property="article:tag" content="Github">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.github.io/2022/03/22/Hexo5_E2E_Config/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>基于Hexo 5.0搭建个人博客 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+      <img class="custom-logo-image" src="/images/dragon_logo.png" alt="才华的同学">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">119</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">27</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text"> Hexo部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E5%92%8C%E7%BE%8E%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text"> 博客优化和美化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%B0%B7%E6%AD%8C%E6%94%B6%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text"> Hexo博客提交谷歌收录</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">119</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.github.io/2022/03/22/Hexo5_E2E_Config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Hexo 5.0搭建个人博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-22 21:58:33" itemprop="dateCreated datePublished" datetime="2022-03-22T21:58:33+08:00">2022-03-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-07-02 23:21:19" itemprop="dateModified" datetime="2022-07-02T23:21:19+08:00">2022-07-02</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hexo 5.0做了较大更新，最主要的变化是hexo5.0和next支持源码与配置隔离，即在指定目录下新增配置文件，修改该配置文件即可覆盖源码里面的配置，这样可以有效避免修改源码，以后可以放心大胆升级hexo和next，而不用担心升级覆盖源码。</p>
+<a id="more"></a>
+<h3 id="hexo部署"><a class="markdownIt-Anchor" href="#hexo部署"></a> Hexo部署</h3>
+<ol>
+<li>
+<p>登录VPS，新建用户pony，因为VPS主机刚开始只有root用户，而brew工具不能使用root安装</p>
+<p><code>useradd -m pony</code></p>
+<p><code>passwd pony #设置用户密码</code></p>
+</li>
+<li>
+<p>安装brew工具，根据提示走，命令如下</p>
+<p><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)&quot;</code></p>
+</li>
+<li>
+<p>添加brew的全局环境变量</p>
+<p><code>echo 'export PATH=&quot;/home/pony/.linuxbrew/Homebrew/bin:$PATH&quot;' &gt;&gt; /etc/profile    #下面hexo也用这个环境变量</code></p>
+<p><code>source /etc/profile</code></p>
+</li>
+<li>
+<p>安装nodejs长期支持版</p>
+<p><code>brew search node</code></p>
+<p><code>brew install node@12</code></p>
+<p><code>echo 'export PATH=&quot;/home/pony/.linuxbrew/opt/node@12/bin:$PATH&quot;' &gt;&gt; /etc/profile    #node环境变量</code></p>
+<p><code>source /etc/profile</code></p>
+</li>
+<li>
+<p>利用npm安装hexo</p>
+<p><code>npm install -g hexo-cli</code></p>
+<p><code>hexo init hexo</code></p>
+<p><code>cd hexo</code></p>
+<p><code>nom install</code></p>
+<p><code>hexo server</code></p>
+<blockquote>
+<p>hexo不需要单独设置环境变量了，跟brew共用一个环境变量</p>
+</blockquote>
+</li>
+<li>
+<p>查看hexo版本</p>
+<p><code>hexo -v或hexo version</code></p>
+<blockquote>
+<p>要切换到普通用户查询，root用户查询不显示hexo版本只显示hexo-cli版本</p>
+</blockquote>
+</li>
+<li>
+<p>在pony家目录下，创建<strong>hexo目录</strong>，初始化博客，生成博客相关的文件</p>
+<p><code>hexo init</code></p>
+</li>
+<li>
+<p>启动博客，并根据提示检查<code>http://[VPS IP]:4000</code>是否打开正常</p>
+<p><code>hexo s #用于在本地测试，后续博客要部署到Github</code></p>
+<blockquote>
+<p>CnetOS 默认是不开放端口的，需要手动开放端口</p>
+<p><code>firewall-cmd --zone=public --add-port=4000/tcp --permanent firewall-cmd --reload</code></p>
+</blockquote>
+</li>
+<li>
+<p>创建新博客</p>
+<p><code>hexo n &quot;my_first_blog”   #新建博客</code></p>
+<p><code>vi ~/hexo/source/_posts/my_first_blog</code></p>
+</li>
+<li>
+<p>重新渲染博客</p>
+<p>**<code>hexo clean**  #清理老的渲染文件</code></p>
+<p>**<code>hexo g** #生成博客，在public目录下生成新的博客渲染文件</code></p>
+<p>**<code>hexo s** #启动博客</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果hexo s之后不小心退出终端了，这个时候再去启动hexo就会提示4000端口被占用。不要担心，hexo服务一会儿就自动退出了，可能要半个小时到一个小时，进程是手动杀不死的。如果急着停掉端口占用，可以运行hexo s -p 5000。稍等片刻，再次运行hexo s，这个时候就可以正常使用4000端口了。</span><br><span class="line">也可以直接查杀端口</span><br><span class="line">netstat -nlp | grep :4000 | awk <span class="string">&#x27;&#123;print $7&#125;&#x27;</span> | awk -F<span class="string">&quot;/&quot;</span> <span class="string">&#x27;&#123; print $1 &#125;&#x27;</span></span><br><span class="line"><span class="built_in">kill</span> 进程号</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>把博客部署到远端Github</p>
+<ul>
+<li>在github上创建仓库，仓库名必须是<code>“用户名.github.io”</code></li>
+<li>在<strong>hexo目录</strong>下安装git部署插件<code>npm install --save hexo-deployer-git</code> （报警请忽略）</li>
+<li>配置<strong>hexo目录</strong>下的<code>_config.yml</code>文件，在文件底部Deployment下配置如下</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:ponysong3/ponysong3.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里repo设置是按照SSH格式来的，具体参考</p>
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/Hexo-SSH-Github-c53c58d29b7947e8b878b13fb1215279">Hexo如何通过SSH连接Github</a></p>
+</blockquote>
+<ul>
+<li>
+<p>创建Github签名</p>
+<p><code>git config --global [user.name](http://user.name/) “ponysong3” git config --global user.email “ponysong3@gmail.com”</code></p>
+</li>
+<li>
+<p>部署到远端Github</p>
+<p><strong><code>hexo d</code></strong></p>
+</li>
+<li>
+<p>后续的博客更新常用命令为<br />
+<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>升级Hexo版本</p>
+<p><code>npm update #没事千万别升级，升级之前千万要备份</code></p>
+</li>
+</ol>
+<h3 id="博客优化和美化"><a class="markdownIt-Anchor" href="#博客优化和美化"></a> 博客优化和美化</h3>
+<ol>
+<li>
+<p>安装next主题</p>
+<p><code>npm install hexo-theme-next</code></p>
+<p><code>npm update hexo-theme-next #更新主题，没事千万别更新</code></p>
+</li>
+<li>
+<p>定制主题配置文件</p>
+<p><code>cp node_modules/hexo-theme-next/_config.yml **_config.next.yml**</code></p>
+</li>
+<li>
+<p>修改<code>_config.next.yml</code> ，详细配置项参考如下链接</p>
+<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/">Getting Started</a></p>
+<blockquote>
+<p>最新版本的hexo和next支持源码隔离配置，即在指定目录下新增配置文件，修改该配置文件即可覆盖源码里面的配置，这样可以有效避免修改源码，以后可以放心大胆升级hexo和next，而不用担心升级覆盖源码</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><strong>我对主题配置文件<code>_config.next.yml</code>和站点配置文件<code>_config.yml</code>的优化</strong>
+<ol>
+<li>
+<p>创建菜单项对应的文件目录</p>
+<p><code>hexo new page about</code></p>
+<p><code>hexo new page tags</code></p>
+<p><code>hexo new page categories</code></p>
+</li>
+<li>
+<p>在<code>theme/next/_config.yml</code>中关联菜单项和新建的文件目录</p>
+<p>**<code>menu**:</code></p>
+<p>**<code>home**: / || fa fa-home</code></p>
+<p>**<code>about**: /about/ || fa fa-user</code></p>
+<p>**<code>tags**: /tags/ || fa fa-tags</code></p>
+<p>**<code>categories**: /categories/ || fa fa-th</code></p>
+<p>**<code>archives**: /archives/ || fa fa-archive</code></p>
+<p><code>#schedule: /schedule/ || fa fa-calendar</code></p>
+<p><code>#sitemap: /sitemap.xml || fa fa-sitemap</code></p>
+<p><code>#commonweal: /404/ || fa fa-heartbeat</code></p>
+</li>
+<li>
+<p>启用分类，编辑<code>hexo/source/categories/index.md</code>，格式如下</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: &lt;日期&gt;</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;categories&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编辑<code>hexo/source/tags/index.md</code>，格式如下</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: &lt;日期&gt;</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编辑文章的默认模板<code>hexo/scaffolds/post.md</code></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">categories:</span><br><span class="line">tags: []</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>配置网站图标</strong></p>
+<p>先到<a target="_blank" rel="noopener" href="https://realfavicongenerator.net/">https://realfavicongenerator.net/</a> 生成图标并下载，上传到VPS的hexo/source/images, 然后修改**<code>_config.next.yml</code>**中的favicon配置</p>
+<p><strong>配置网站Title下的Logo</strong></p>
+<p><code>custom_logo: /images/vip.png</code></p>
+<p><strong>配置首页侧边栏头像</strong></p>
+<p><code>avatar:</code></p>
+<p><code># Replace the default image and set the url here.</code></p>
+<p><code>url: /images/colors.png</code></p>
+<p><code># If true, the avatar will be dispalyed in circle.</code></p>
+<p><code>rounded: true</code></p>
+<p><code># If true, the avatar will be rotated with the cursor.</code></p>
+<p><code>rotated: true</code></p>
+</li>
+<li>
+<p><strong>配置pjax</strong></p>
+<p><code>pjax: true</code></p>
+</li>
+<li>
+<p><strong>配置声明</strong></p>
+<p><code>creative_commons:</code></p>
+<p><code>license: by-nc-sa</code></p>
+<p><code>sidebar: true</code></p>
+<p><code>post: true</code></p>
+<p><code>language: deed.sh</code></p>
+</li>
+<li>
+<p><strong>启用侧边栏菜单图标和数量提示</strong></p>
+<p><code>menu_settings:</code></p>
+<p><code>icons: true</code></p>
+<p><code>badges: true</code></p>
+</li>
+<li>
+<p><strong>底部跳动的心</strong></p>
+<p><code>icon:</code></p>
+<p><code># Icon name in Font Awesome. See: https://fontawesome.com/icons</code></p>
+<p><code>name: fa fa-heart</code></p>
+<p><code># If you want to animate the icon, set it to true.</code></p>
+<p><code>animated: true</code></p>
+<p><code># Change the color of icon, using Hex Code.</code></p>
+<p><code>color: &quot;#ff0000&quot;</code></p>
+</li>
+<li>
+<p><strong>启用文章底部的标签图标</strong></p>
+<p><code>tag_icon: true</code></p>
+</li>
+<li>
+<p><strong>隐藏底部Powered by</strong></p>
+<p><code># Powered by Hexo &amp; NexT</code></p>
+<p><code>powered: false</code></p>
+</li>
+<li>
+<p><strong>复制按钮</strong></p>
+<p><code>copy_button:</code></p>
+<p><code>enable: true</code></p>
+<p><code># Available values: default | flat | mac</code></p>
+<p><code>style:</code></p>
+</li>
+<li>
+<p><strong>配置代码块样式，需要结合站点配置文件和next主题配置文件</strong></p>
+<blockquote>
+<p><strong>_config.yml</strong></p>
+</blockquote>
+<p><code>highlight:</code></p>
+<p><code>enable: true</code></p>
+<p><code>...</code></p>
+<p><code>prismjs:</code></p>
+<p><code>enable: false</code></p>
+<p><code>...</code></p>
+<blockquote>
+<p><strong>_config.next.yml</strong></p>
+</blockquote>
+<p><code>codeblock:</code></p>
+<p><code># Code Highlight theme</code></p>
+<p><code># All available themes: https://theme-next.js.org/highlight/</code></p>
+<p><code>...</code></p>
+<p><code>theme:</code></p>
+<p><code>light: tomorrow-night</code></p>
+<p><code>dark: tomorrow-night</code></p>
+<p><code>...</code></p>
+</li>
+<li>
+<p><strong>启用数学公式</strong></p>
+<p>在hexo博客根目录下执行</p>
+<p><code>$ npm un hexo-renderer-marked</code></p>
+<p><code>$ npm i hexo-renderer-markdown-it-plus</code></p>
+<p>然后修改**_config.next.yml**</p>
+<p><code>katex:</code></p>
+<p><code>enable: true</code></p>
+<p><code># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</code></p>
+<p><code>copy_tex: false</code></p>
+</li>
+<li>
+<p><strong>配置侧边栏BY-NC-SA图标和netlify图标</strong></p>
+<p>在hexo/source/_data下创建sidebar.njk , 粘贴如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cc-license animated&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;sponsor&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.netlify.com&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cc-opacity&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Deploy with Netlify → https://www.netlify.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">&quot;80&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://www.netlify.com/img/global/badges/netlify-dark.svg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Netlify&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存后，去到_config.next.yml 取消如下注释</p>
+<p><code>sidebar: source/_data/sidebar.njk</code></p>
+</li>
+<li>
+<p><strong>修改主题色</strong></p>
+<p>在hexo/source/_data下创建variables.styl , 粘贴如下代码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$black-deep   = #7a2549;</span><br><span class="line"></span><br><span class="line">$site-author-image-border-width = 0px;</span><br><span class="line"></span><br><span class="line">$headband-bg = #7a2549;</span><br><span class="line"></span><br><span class="line">$b2t-bg-color = #7a2549;</span><br><span class="line"></span><br><span class="line">$link-hover-color = #7a2549;</span><br><span class="line"></span><br><span class="line">$btn-default-border-color = #7a2549;</span><br><span class="line"></span><br><span class="line">$btn-default-hover-bg = #7a2549;</span><br><span class="line"></span><br><span class="line">$btn-default-hover-border-color = #7a2549;</span><br></pre></td></tr></table></figure>
+<p>保存后，去到<code>**_config.next.yml**</code> 取消如下注释</p>
+<p><code>variable: source/_data/variables.styl</code></p>
+<p>同理在hexo/source/_data下新增styles.styl</p>
+<p><code>.archive .collection-title &#123;</code></p>
+<p><code>display: none !important;</code></p>
+<p><code>&#125;</code></p>
+</li>
+<li>
+<p><strong>配置站点地图</strong></p>
+<p>在站点配置文件<code>**_config.yml**</code>配置博客网站域名</p>
+<p><code>url: [https://ponysong3.github](https://ponysong3.github/).io</code></p>
+<p><code>root: /</code></p>
+</li>
+<li>
+<p><strong>绑定域名</strong></p>
+<p>提前在阿里云官网绑定域名，在hexo目录blog/source下新建CNAME文件，文件内容如下</p>
+<p><code>ponysong3.top</code></p>
+<p>至此优化完成，可以看下效果了</p>
+<p><a target="_blank" rel="noopener" href="https://ponysong3.top/">才华的同学</a></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="hexo博客提交谷歌收录"><a class="markdownIt-Anchor" href="#hexo博客提交谷歌收录"></a> Hexo博客提交谷歌收录</h3>
+<p>略</p>
+<div class="note info no-icon"><ol>
+<li>多层Categories，用于写系列或连载的书籍</li>
+<li>Tag Plugins，可以扩展好多内容标注样式</li>
+<li><a target="_blank" rel="noopener" href="https://theme-next.js.org/">https://theme-next.js.org/</a> next官方文档，拉到底部可以参考网站源代码</li>
+</ol>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.github.io/2022/03/22/Hexo5_E2E_Config/" title="基于Hexo 5.0搭建个人博客">https://ponysong3.github.io/2022/03/22/Hexo5_E2E_Config/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+              <a href="/tags/Next/" rel="tag"><i class="fa fa-tag"></i> Next</a>
+              <a href="/tags/Github/" rel="tag"><i class="fa fa-tag"></i> Github</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/08/Hexo_SSH_Github/" rel="prev" title="Hexo如何通过SSH连接Github">
+                  <i class="fa fa-chevron-left"></i> Hexo如何通过SSH连接Github
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
