@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#7a2549">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#7a2549">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="上学期间写作文会先列个提纲，目的就是为了使作文有个好的结构。纵使平时积累再多的词汇、语法、素材，等到了列提纲的时候也得简单、清晰、明了。类似地，Python的三方库和方法纷繁复杂，但它自身的语法要素和程序结构却简单、清晰、明了。语法要素已经在“Python语法元素分析”一文中介绍过了，本文将介绍Python程序控制的方法论，即程序结构和语法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python程序结构">
+<meta property="og:url" content="https://ponysong3.github.io/2021/01/02/Python_Structure/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="上学期间写作文会先列个提纲，目的就是为了使作文有个好的结构。纵使平时积累再多的词汇、语法、素材，等到了列提纲的时候也得简单、清晰、明了。类似地，Python的三方库和方法纷繁复杂，但它自身的语法要素和程序结构却简单、清晰、明了。语法要素已经在“Python语法元素分析”一文中介绍过了，本文将介绍Python程序控制的方法论，即程序结构和语法。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-02T12:43:55.000Z">
+<meta property="article:modified_time" content="2022-07-02T13:12:23.046Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="条件">
+<meta property="article:tag" content="分支">
+<meta property="article:tag" content="循环">
+<meta property="article:tag" content="结构">
+<meta property="article:tag" content="random">
+<meta property="article:tag" content="异常处理">
+<meta property="article:tag" content="try">
+<meta property="article:tag" content="except">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.github.io/2021/01/02/Python_Structure/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Python程序结构 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+      <img class="custom-logo-image" src="/images/dragon_logo.png" alt="才华的同学">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">119</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">26</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E4%B9%8B%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 分之结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text"> 单分支结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text"> 二分支结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text"> 多分支结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%8F%8A%E7%BB%84%E5%90%88"><span class="nav-number">1.4.</span> <span class="nav-text"> 条件判断及组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text"> 特殊的分支结构：程序的异常处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 循环结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.1.</span> <span class="nav-text"> 遍历循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.2.</span> <span class="nav-text"> 无限循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">2.3.</span> <span class="nav-text"> 循环控制保留字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text"> 循环的高级用法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3random%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text"> 他山之石：random库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> 基本随机函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text"> 扩展随机数函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%E8%92%99%E5%A1%94%E5%8D%A1%E6%B4%9B%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text"> 举例：蒙塔卡洛法计算圆周率</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">119</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.github.io/2021/01/02/Python_Structure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python程序结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-02 20:43:55" itemprop="dateCreated datePublished" datetime="2021-01-02T20:43:55+08:00">2021-01-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-07-02 21:12:23" itemprop="dateModified" datetime="2022-07-02T21:12:23+08:00">2022-07-02</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>上学期间写作文会先列个提纲，目的就是为了使作文有个好的结构。纵使平时积累再多的词汇、语法、素材，等到了列提纲的时候也得简单、清晰、明了。类似地，Python的三方库和方法纷繁复杂，但它自身的语法要素和程序结构却简单、清晰、明了。语法要素已经在“Python语法元素分析”一文中介绍过了，本文将介绍Python程序控制的方法论，即程序结构和语法。</p>
+<a id="more"></a>
+<p>Python程序结构包括顺序结构、分支结构、循环结构。顺序结构无需赘述，着重介绍分支结构和循环结构。</p>
+<h3 id="分之结构"><a class="markdownIt-Anchor" href="#分之结构"></a> 分之结构</h3>
+<p>根据判断条件结果而选择不同向前路径的运行方式。</p>
+<h4 id="单分支结构"><a class="markdownIt-Anchor" href="#单分支结构"></a> 单分支结构</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件&gt;:</span><br><span class="line">   &lt;语句块&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="二分支结构"><a class="markdownIt-Anchor" href="#二分支结构"></a> 二分支结构</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件&gt;:</span><br><span class="line">   &lt;语句块<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">   &lt;语句块<span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>二分支结构的紧凑形式：<code>&lt;表达式1&gt; if &lt;条件&gt; else &lt;表达式2&gt;</code> ，注意紧凑形式的二分支if、else输出的是表达式而不是语句（语句可以赋值或输出，而表达式仅仅是语句的一部分）</p>
+<h4 id="多分支结构"><a class="markdownIt-Anchor" href="#多分支结构"></a> 多分支结构</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件&gt;:</span><br><span class="line">   &lt;语句块<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">elif</span> :</span><br><span class="line">   &lt;语句块<span class="number">2</span>&gt;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">   &lt;语句块n&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="条件判断及组合"><a class="markdownIt-Anchor" href="#条件判断及组合"></a> 条件判断及组合</h4>
+<p>分支语句中需要大量的条件判断，Python提供了一些操作符来对条件进行判断并且产生“真”或“假”的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;	&lt;&#x3D;	&gt;&#x3D;	&gt;	&#x3D;&#x3D;	!&#x3D;</span><br></pre></td></tr></table></figure>
+<p>除了操作符，Python也提供了三个用来对条件进行组合的保留字。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作符及使用</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">x <strong>and</strong> y</td>
+<td style="text-align:left">两个条件x和y的逻辑与</td>
+</tr>
+<tr>
+<td style="text-align:left">x <strong>or</strong> y</td>
+<td style="text-align:left">两个条件x和y的逻辑或</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>not</strong> x</td>
+<td style="text-align:left">条件x的逻辑非</td>
+</tr>
+</tbody>
+</table>
+<h4 id="特殊的分支结构程序的异常处理"><a class="markdownIt-Anchor" href="#特殊的分支结构程序的异常处理"></a> 特殊的分支结构：程序的异常处理</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 出现异常时，就执行except语句</span></span><br><span class="line"><span class="keyword">try</span> :</span><br><span class="line">    &lt;想要执行的程序语句&gt;</span><br><span class="line"><span class="keyword">except</span> :</span><br><span class="line">    &lt;出现异常之后执行的语句&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 出现指定异常类型时，才执行except语句</span></span><br><span class="line"><span class="keyword">try</span> :</span><br><span class="line">    &lt;想要执行的程序语句&gt;</span><br><span class="line"><span class="keyword">except</span> &lt;异常类型&gt;:</span><br><span class="line">    &lt;出现异常之后执行的语句&gt;</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 异常处理高级用法</span></span><br><span class="line"><span class="keyword">try</span> :</span><br><span class="line">    &lt;想要执行的程序语句&gt;</span><br><span class="line"><span class="keyword">except</span> :</span><br><span class="line">    &lt;出现异常之后执行的语句&gt;</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    &lt;不发生异常时执行的语句&gt;</span><br><span class="line"><span class="keyword">finally</span> :</span><br><span class="line">    &lt;一定执行的语句&gt;</span><br></pre></td></tr></table></figure>
+<div class="note info no-icon"><ul>
+<li>多分支条件之间的覆盖是重要问题</li>
+<li>分支结构是程序的重要框架，读程序先看分支</li>
+</ul>
+</div>
+<h3 id="循环结构"><a class="markdownIt-Anchor" href="#循环结构"></a> 循环结构</h3>
+<p>在Python语言中，只提供两种循环方式，一种叫遍历循环，对应保留字for；另一种叫无限循环，对应保留字while. 掌握这两周循环就掌握了Python所有的循环表达方式。</p>
+<h4 id="遍历循环"><a class="markdownIt-Anchor" href="#遍历循环"></a> 遍历循环</h4>
+<p>即遍历某个结构形成的循环运行方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;循环变量&gt; <span class="keyword">in</span> &lt;遍历结构&gt; :</span><br><span class="line">    &lt;语句块&gt;</span><br><span class="line"><span class="comment"># 遍历结构能够包含多个元素，所谓遍历结构不是一种类型，它包含很多的类型。每次循环，程序从遍历结构中提取其中一个元素放入循环变量，并执行一次语句块，执行结束后再从遍历结构中提取下一个元素，然后再次执行语句块，如此循环。</span></span><br></pre></td></tr></table></figure>
+<p>遍历循环的典型的搭配方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计数循环</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(N) :</span><br><span class="line">    &lt;语句块&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(M,N,K) :</span><br><span class="line">    &lt;语句块&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串遍历循环</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> &lt;字符串&gt; :</span><br><span class="line">    &lt;语句块&gt;</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 列表遍历循环</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> &lt;列表&gt; :</span><br><span class="line">    &lt;语句块&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历文件的每一行</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> &lt;文件&gt; :</span><br><span class="line">    &lt;语句块&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="无限循环"><a class="markdownIt-Anchor" href="#无限循环"></a> 无限循环</h4>
+<p>无限循环是由条件控制的循环运行方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> &lt;条件&gt; :</span><br><span class="line">    &lt;语句块&gt;</span><br><span class="line"><span class="comment"># 反复执行语句块，直到条件不满足为止</span></span><br></pre></td></tr></table></figure>
+<h4 id="循环控制保留字"><a class="markdownIt-Anchor" href="#循环控制保留字"></a> 循环控制保留字</h4>
+<p>在所有的编程语言中，break和 continue都是循环控制的保留字。</p>
+<ul>
+<li>break跳出并结束当前循环，执行循环后的语句。即打破整个循环，如果是多层循环，则打破当前层。</li>
+<li>continue结束当次循环，继续执行后续次数的循环。即打破当次循环。</li>
+</ul>
+<h4 id="循环的高级用法"><a class="markdownIt-Anchor" href="#循环的高级用法"></a> 循环的高级用法</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 循环变量 <span class="keyword">in</span> &lt;遍历结构&gt; :</span><br><span class="line">    &lt;语句块<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    &lt;语句块<span class="number">2</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> &lt;条件&gt; :</span><br><span class="line">    &lt;语句块<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    &lt;语句块<span class="number">2</span>&gt;</span><br><span class="line"><span class="comment"># 如果循环没有被break语句退出时，执行else语句块. else语句作为“正常”完成循环的奖励</span></span><br></pre></td></tr></table></figure>
+<h3 id="他山之石random库"><a class="markdownIt-Anchor" href="#他山之石random库"></a> 他山之石：random库</h3>
+<p>random库是用于生成随机数的Python标准库，即随着Python解释器而自带的库，不需要安装。</p>
+<div class="note info no-icon"><p><code>严格来讲，计算机产生的只是伪随机数，即在特定算法规则下产生的数字，这种数字超出了常人的预测能力，所以我们可以把它当成“随机数”. 计算机通常采用梅森旋转算法生成伪随机序列，这个序列中的每个元素称伪随机数。基本原理是：随机数种子---梅森旋转算法---随机序列。只要种子相同，随机序列和序列中元素就是确定的</code></p>
+</div>
+<h4 id="基本随机函数"><a class="markdownIt-Anchor" href="#基本随机函数"></a> 基本随机函数</h4>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seed(a=None)</td>
+<td>初始化给定的随机种子，默认为当前系统时间 <br/> <code>&gt;&gt;&gt;random.seed(10) #产生种子10对应的随机序列</code></td>
+</tr>
+<tr>
+<td>random()</td>
+<td>生成一个[0.0, 1.0)之间的随机小数<br/> <code>&gt;&gt;&gt;random.random()</code><br/><code>0.5714025946899135</code>这是种子10对应随机序列中的第一个元素</td>
+</tr>
+</tbody>
+</table>
+<p><code>程序中使用随机数种子是因为有时候需要复现程序运行结果，如果不指定种子，随机数默认使用系统时间作为种子，而系统时间是精确到微秒的，很难复现</code></p>
+<h4 id="扩展随机数函数"><a class="markdownIt-Anchor" href="#扩展随机数函数"></a> 扩展随机数函数</h4>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>randint(a, b)</td>
+<td>生成一个[a, b]之间的整数随机数<br/> <code>&gt;&gt;&gt;random.randint(1, 999)</code><br/><code>357</code></td>
+</tr>
+<tr>
+<td>randrange(m, n [,k])</td>
+<td>生成一个[m, n] 之间以k为步长的随机整数<br/><code>&gt;&gt;&gt;random.randrange(1, 999, 10)</code><br/><code>251</code></td>
+</tr>
+<tr>
+<td>getrandbits(k)</td>
+<td>生成一个k比特长的随机整数<br/><code>&gt;&gt;&gt;random.getrandbits(5)</code><br/><code>15</code></td>
+</tr>
+<tr>
+<td>uniform(a, b)</td>
+<td>生成一个[a, b]之间的随机小数随机<br/><code>&gt;&gt;&gt;random.uniform(1,8)</code><br/><code>7.884477557916984</code></td>
+</tr>
+<tr>
+<td>choice(seq)</td>
+<td>从序列seq中随机选择一个元素<br/><code>random.choice([1,2,3,4,5,6,7,8,9,0])</code><br/><code>6</code></td>
+</tr>
+<tr>
+<td>shuffle(seq)</td>
+<td>将序列seq中元素随机排列，返回打乱后的序列<br/><code>&gt;&gt;&gt;s=[1,2,3,4,5,6,7]; random.shuffle(s);print(s)</code><br/><code>[2, 4, 6, 7, 3, 5, 1]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="举例蒙塔卡洛法计算圆周率"><a class="markdownIt-Anchor" href="#举例蒙塔卡洛法计算圆周率"></a> 举例：蒙塔卡洛法计算圆周率</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#蒙特卡洛法计算圆周率</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment">#设想在一个正方形中撒的点数</span></span><br><span class="line">dots = <span class="number">1000</span> * <span class="number">1000</span></span><br><span class="line">counts = <span class="number">0</span></span><br><span class="line">PI = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">start_time = time.perf_counter()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, dots+<span class="number">1</span>):</span><br><span class="line">    <span class="comment">#每个撒的点坐标</span></span><br><span class="line">    x, y = random.random(), random.random()</span><br><span class="line">    <span class="comment">#点据中心的距离</span></span><br><span class="line">    dist = pow((x**<span class="number">2</span> + y**<span class="number">2</span>), <span class="number">0.5</span>)</span><br><span class="line">    <span class="keyword">if</span> dist &lt; <span class="number">1</span> :</span><br><span class="line">        counts = counts + <span class="number">1</span></span><br><span class="line">PI = <span class="number">4</span> * (counts/dots)</span><br><span class="line">end_time = time.perf_counter()</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;圆周率的值为&#123;&#125;&quot;</span>.format(PI))</span><br><span class="line">print(<span class="string">&quot;计算总耗时&#123;:.5f&#125;秒&quot;</span>.format(end_time-start_time))</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.github.io/2021/01/02/Python_Structure/" title="Python程序结构">https://ponysong3.github.io/2021/01/02/Python_Structure/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/%E6%9D%A1%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> 条件</a>
+              <a href="/tags/%E5%88%86%E6%94%AF/" rel="tag"><i class="fa fa-tag"></i> 分支</a>
+              <a href="/tags/%E5%BE%AA%E7%8E%AF/" rel="tag"><i class="fa fa-tag"></i> 循环</a>
+              <a href="/tags/%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 结构</a>
+              <a href="/tags/random/" rel="tag"><i class="fa fa-tag"></i> random</a>
+              <a href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 异常处理</a>
+              <a href="/tags/try/" rel="tag"><i class="fa fa-tag"></i> try</a>
+              <a href="/tags/except/" rel="tag"><i class="fa fa-tag"></i> except</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/03/Python_Data_Type/" rel="prev" title="Python数据类型">
+                  <i class="fa fa-chevron-left"></i> Python数据类型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/15/Live-Streaming/" rel="next" title="直播设备清单">
+                  直播设备清单 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+
+  
+
+    </div>
+</body>
+</html>

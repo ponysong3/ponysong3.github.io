@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#7a2549">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#7a2549">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ponysong3.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="重点介绍两种基本数据类型：数字类型和字符串类型。对于每种类型，分别介绍其表示方式和操作方式。比如，数字可以表示成二进制、八进制、十六进制形式，字符串可以用单引号、双引号、三引号表示；数字可以通过操作符或操作函数进行运算，字符串可以通过操作符、操作函数、对象方法进行编辑。更普遍地，任何其他数据类型都有其“表示方式”和“操作方式”两方面。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据类型">
+<meta property="og:url" content="https://ponysong3.github.io/2020/11/03/Python_Data_Type/index.html">
+<meta property="og:site_name" content="才华的同学">
+<meta property="og:description" content="重点介绍两种基本数据类型：数字类型和字符串类型。对于每种类型，分别介绍其表示方式和操作方式。比如，数字可以表示成二进制、八进制、十六进制形式，字符串可以用单引号、双引号、三引号表示；数字可以通过操作符或操作函数进行运算，字符串可以通过操作符、操作函数、对象方法进行编辑。更普遍地，任何其他数据类型都有其“表示方式”和“操作方式”两方面。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-03T13:58:12.000Z">
+<meta property="article:modified_time" content="2022-07-02T13:10:52.219Z">
+<meta property="article:author" content="Pony">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="整数">
+<meta property="article:tag" content="浮点数">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="格式化">
+<meta property="article:tag" content="转义符">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ponysong3.github.io/2020/11/03/Python_Data_Type/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Python数据类型 | 才华的同学</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">才华的同学</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">此处征集鸡汤金句</p>
+      <img class="custom-logo-image" src="/images/dragon_logo.png" alt="才华的同学">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">119</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">26</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text"> 数字类型与操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.1.</span> <span class="nav-text"> 三种数字类型的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.2.</span> <span class="nav-text"> 数值运算操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text"> 数值运算操作函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text"> 字符串类型与操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.1.</span> <span class="nav-text"> 字符串类型的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.2.</span> <span class="nav-text"> 字符串操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text"> 字符串操作函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text"> 字符串操作方法</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pony"
+      src="/images/colors.png">
+  <p class="site-author-name" itemprop="name">Pony</p>
+  <div class="site-description" itemprop="description">本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">119</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div class="cc-license animated" itemprop="sponsor">
+  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
+</div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ponysong3.github.io/2020/11/03/Python_Data_Type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/colors.png">
+      <meta itemprop="name" content="Pony">
+      <meta itemprop="description" content="本人非计算机和软件相关专业，业余捣鼓点硬件和代码，纯属折腾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="才华的同学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python数据类型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-03 21:58:12" itemprop="dateCreated datePublished" datetime="2020-11-03T21:58:12+08:00">2020-11-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-07-02 21:10:52" itemprop="dateModified" datetime="2022-07-02T21:10:52+08:00">2022-07-02</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>重点介绍两种基本数据类型：数字类型和字符串类型。对于每种类型，分别介绍其表示方式和操作方式。比如，数字可以表示成二进制、八进制、十六进制形式，字符串可以用单引号、双引号、三引号表示；数字可以通过操作符或操作函数进行运算，字符串可以通过操作符、操作函数、对象方法进行编辑。更普遍地，任何其他数据类型都有其“表示方式”和“操作方式”两方面。</p>
+<a id="more"></a>
+<h4 id="数字类型与操作"><a class="markdownIt-Anchor" href="#数字类型与操作"></a> 数字类型与操作</h4>
+<h5 id="三种数字类型的表示"><a class="markdownIt-Anchor" href="#三种数字类型的表示"></a> 三种数字类型的表示</h5>
+<div class="tabs" id="number-type-selection"><ul class="nav-tabs"><li class="tab active"><a href="#number-type-selection-1">整数</a></li><li class="tab"><a href="#number-type-selection-2">浮点数</a></li><li class="tab"><a href="#number-type-selection-3">复数</a></li></ul><div class="tab-content"><div class="tab-pane active" id="number-type-selection-1"><p>与数学中整数的概念一致，可正可负，没有取值范围限制，如pow(2, pow(2, 15))表示很大很大的整数</p>
+<p>整数有4种常见的进制表示形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">十进制：1010，99，-217</span><br><span class="line">二进制：0b或0B开头</span><br><span class="line">八进制：0o或0O开头</span><br><span class="line">十六进制：0x或0X开头</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="number-type-selection-2"><p>与数学中实数一致，取值范围(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn><msup><mn>0</mn><mn>308</mn></msup><mi mathvariant="normal">到</mi><mn>1</mn><msup><mn>0</mn><mn>308</mn></msup></mrow><annotation encoding="application/x-tex">-10^{308}到10^{308}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span><span class="mord cjk_fallback">到</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span>)和小数精度(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>16</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span>)受限制</p>
+<p>浮点数间的运算存在不确定尾数，但这不是bug，所有的编程语言都存在该问题，这是十进制和二进制小数无法一一对应导致的，如：</p>
+<p>0.1+0.3 = 0.4，但0.1+0.2 = 0.30000000000000004</p>
+<p>考虑到不确定尾数，浮点数运算或比较通常用round(x, d)函数来辅助</p>
+<p>另外，浮点数也可以用科学记数法来表示，如1.23e-4表示0.000123</p></div><div class="tab-pane" id="number-type-selection-3"><p>与数学中的复数一致，由实部和虚部构成，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">z=<span class="number">1.23e-4</span>+<span class="number">5.6e+89j</span></span><br><span class="line">z.real</span><br><span class="line">Out[<span class="number">12</span>]: <span class="number">0.000123</span></span><br><span class="line">z.imag</span><br><span class="line">Out[<span class="number">13</span>]: <span class="number">5.6e+89</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h5 id="数值运算操作符"><a class="markdownIt-Anchor" href="#数值运算操作符"></a> 数值运算操作符</h5>
+<table>
+<thead>
+<tr>
+<th>操作符及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x + y</td>
+<td>加，x与y之和</td>
+</tr>
+<tr>
+<td>x - y</td>
+<td>减，x与y之差</td>
+</tr>
+<tr>
+<td>x * y</td>
+<td>乘，x与y之积</td>
+</tr>
+<tr>
+<td>x / y</td>
+<td>除，x与y之商 10/3结果是3.3333333333333335，<br />与数学中一致，整数之商得小数，其他编程序言不是如此</td>
+</tr>
+<tr>
+<td>x // y</td>
+<td>整数除，x与y之整数商 10//3结果是3</td>
+</tr>
+<tr>
+<td>+ x</td>
+<td>x本身</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>y的负值</td>
+</tr>
+<tr>
+<td>x % y</td>
+<td>余数，模运算10%3的结果是1</td>
+</tr>
+<tr>
+<td>x ** y</td>
+<td>当y是小数时，开方运算10**0.5结果是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mn>10</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.13278em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">1</span><span class="mord">0</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.13278em;"><span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<details class="note info no-icon"><summary><p>二元操作符有对应的增强赋值操作符</p>
+</summary>
+<table>
+<tr>
+	<td>增强操作符及使用</td>
+	<td>描述</td>
+</tr>
+<tr>
+	<td rowspan="3">x op= y</td>
+	<td>即 x=x op y， 其中，op为二元操作符</td>
+</tr>
+<tr>
+	<td>x+=y	x-=y	x*=y	x/=y	x//y 	x%=y	x**y</td>
+</tr>
+<tr>
+	<td>x**=3 与 x=x**3等价</td>
+</tr>
+</table>
+
+</details>
+<div class="note info"><p>不同数字类型间的混合运算，生成结果为“最宽”类型，变宽顺序为“整数”&lt;“浮点数”&lt;“复数”</p>
+</div>
+<h5 id="数值运算操作函数"><a class="markdownIt-Anchor" href="#数值运算操作函数"></a> 数值运算操作函数</h5>
+<table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abx(x)</td>
+<td>绝对值，x的绝对值<br />abs(-10.01)的结果为10.01</td>
+</tr>
+<tr>
+<td>divmod(x,y)</td>
+<td>商余，(x//y, x%y)，同时输出商和余数<br /><code>divmod(10, 3)，结果为(3, 1)</code></td>
+</tr>
+<tr>
+<td>pow(x, y, [, z])</td>
+<td>幂余，(x**y)%z，[…]表示参数z可以省略<br /><code>pow(3, pow(3, 99), 10000)结果为4587</code></td>
+</tr>
+<tr>
+<td>round(x[, d])</td>
+<td>四舍五入，d是保留小数位数，默认值为0<br /><code>round(-10.123, 2)结果为-10.12</code></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">max(x_1,x_2, ... , x_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
+<td>最大值，返回<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1,x_2, ... , x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>中的最大值，n不限</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">min(x_1,x_2, ... , x_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
+<td>最小值，返回<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1,x_2, ... , x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>中的最小值，n不限</td>
+</tr>
+<tr>
+<td>int(x)</td>
+<td>将x变成整数，舍弃小数部分<br /><code>int(123.45)结果为123；int(&quot;123&quot;)结果为123</code></td>
+</tr>
+<tr>
+<td>float(x)</td>
+<td>将x变成浮点数，增加小数部分<br /><code>float(12)结果为12.0；float(&quot;1.23&quot;)结果为1.23</code></td>
+</tr>
+<tr>
+<td>complex(x)</td>
+<td>将x变成复数，增加虚数部分<br /><code>complex(4)结果为4+0j</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="字符串类型与操作"><a class="markdownIt-Anchor" href="#字符串类型与操作"></a> 字符串类型与操作</h4>
+<h5 id="字符串类型的表示"><a class="markdownIt-Anchor" href="#字符串类型的表示"></a> 字符串类型的表示</h5>
+<p>字符串即单引号或双引号括起来的有序字符序列，支持索引和切片，有2类4种表示方法：</p>
+<ul>
+<li>一对单引号 / 双引号</li>
+<li>一对三单引号 / 三双引号</li>
+</ul>
+<p>索引格式：&lt;字符串&gt;[M]</p>
+<p>切片格式：&lt;字符串&gt;[M:N:K]，M省略表示至开头，N省略表示至结尾，K代表步长</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">word=<span class="string">&quot;世界人民大团结万岁&quot;</span></span><br><span class="line">word[<span class="number">5</span>]</span><br><span class="line">Out[<span class="number">19</span>]: <span class="string">&#x27;团&#x27;</span></span><br><span class="line">word[::<span class="number">-1</span>]</span><br><span class="line">Out[<span class="number">20</span>]: <span class="string">&#x27;岁万结团大民人界世&#x27;</span></span><br></pre></td></tr></table></figure>
+<details class="note info no-icon"><summary><p>字符串的特殊字符–转义符</p>
+</summary>
+<p>转义符可以表达字符的本意</p>
+<p><code>&quot;这里有个双引号(\&quot;)&quot;	结果为	这里有个双引号(&quot;)</code></p>
+<p>转义符也可以形成一些组合，表达一些不可打印的含义</p>
+<p><code>&quot;\b&quot;回退		&quot;\n&quot;换行(光标移动到下行首)		&quot;\r&quot;回车(光标移动到本行首)</code></p>
+
+</details>
+<h5 id="字符串操作符"><a class="markdownIt-Anchor" href="#字符串操作符"></a> 字符串操作符</h5>
+<table>
+<thead>
+<tr>
+<th>操作符及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x + y</td>
+<td>连接两个字符串x和y</td>
+</tr>
+<tr>
+<td>n * x <strong>或</strong> x*n</td>
+<td>复制n次字符x</td>
+</tr>
+<tr>
+<td>x <strong>in</strong> s</td>
+<td>如果x是s的子串，返回True，否则返回False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="字符串操作函数"><a class="markdownIt-Anchor" href="#字符串操作函数"></a> 字符串操作函数</h5>
+<table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(x)</td>
+<td>长度，返回字符串x的长度<br /><code>len(&quot;一二三456&quot;)结果为6</code></td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>任意类型x所对应的字符串形式<br /><code>str(1.23)结果为&quot;1.23&quot; str([1,2])结果为&quot;[1,2]&quot;</code></td>
+</tr>
+<tr>
+<td>hex(x)<strong>或</strong>oct(x)</td>
+<td>整数x的十六进制或八进制小写形式字符串<br /><code>hex(425)结果为&quot;0x1a9&quot; oct(425)结果为&quot;0o651&quot;</code></td>
+</tr>
+<tr>
+<td>chr(u)</td>
+<td>u为Unicode编码，返回其对应的字符</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>x为字符，返回其对应的Unicode编码</td>
+</tr>
+</tbody>
+</table>
+<details class="note primary"><summary><p>知识点扩展</p>
+</summary>
+<p><strong>eval(x)</strong><br />
+eval(x)与str(x)相反，eval(x)是将x转化为python能够直接运行的语句，如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval(<span class="string">&quot;1+2&quot;</span>)</span><br><span class="line">Out[<span class="number">21</span>]: <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p><strong>Unicode</strong><br />
+Unicode是统一字符编码，俗称”万国码“，即覆盖几乎所有字符的编码方式<br />
+从0到1114111（0x10FFFF）空间中，每个编码对应一个字符<br />
+Python字符串中每个字符都是Unicode编码字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;1+1=2 &#x27;</span>+chr(<span class="number">10004</span>)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="string">&#x27;1+1=2 ✔&#x27;</span></span><br><span class="line"><span class="string">&#x27;这个字符♉的Unicode值是：&#x27;</span>+str(ord(<span class="string">&#x27;♉&#x27;</span>))</span><br><span class="line">Out[<span class="number">7</span>]: <span class="string">&#x27;这个字符♉的Unicode值是：9801&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>):</span><br><span class="line">  ...:     print(chr(<span class="number">9800</span> + i), end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">  ...:     </span><br><span class="line">♈♉♊♋♌♍♎♏♐♑♒♓</span><br></pre></td></tr></table></figure>
+</details>
+<h5 id="字符串操作方法"><a class="markdownIt-Anchor" href="#字符串操作方法"></a> 字符串操作方法</h5>
+<details class="note info"><summary><p>“方法”是面向对象编程中的一个专有名词</p>
+</summary>
+<ul>
+<li>“方法”特指&lt;a&gt;.&lt;b&gt;()风格中的函数&lt;b&gt;()</li>
+<li>方法本身是函数，但与&lt;a&gt;有关，&lt;a&gt;.&lt;b&gt;()风格使用</li>
+<li>字符串及变量也是&lt;a&gt;，存在一些方法</li>
+</ul>
+
+</details>
+<table>
+<thead>
+<tr>
+<th>方法及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str.lower()<strong>或</strong>str.upper()</td>
+<td>返回字符串的副本，全部字符小写/大写<br /><code>&quot;AbCdEfGk&quot;.lower() 结果为 'abcdefgk'</code></td>
+</tr>
+<tr>
+<td>str.split(sep=None)</td>
+<td>返回一个列表，由str根据被sep分隔的部分组成<br /><code>&quot;A,B,C&quot;.split(&quot;,&quot;) 结果为 ['A', 'B', 'C'] #主要用于拆分元素</code></td>
+</tr>
+<tr>
+<td>str.count(sub)</td>
+<td>返回子串sub在str中出现的次数<br /><code>&quot;an apple a day&quot;.count(&quot;a&quot;) 结果为 4</code></td>
+</tr>
+<tr>
+<td>str.replace(old, new)</td>
+<td>返回字符串str副本，所有old子串被替换为new<br /><code>&quot;黑化肥挥发会发灰&quot;.replace(&quot;发&quot;, &quot;fa&quot;) 结果为 '黑化肥挥fa会fa灰'</code></td>
+</tr>
+<tr>
+<td>str.center(width[,fillchar])</td>
+<td>字符串根据width居中，fillchar可选<br /><code>&quot;python&quot;.center(20,'=') 结果为 &quot;=======python=======&quot;</code></td>
+</tr>
+<tr>
+<td>str.strip(chars)</td>
+<td>从str中去掉在其左侧和右侧chars中列出的字符<br /><code>&quot;= python= &quot;.strip(&quot; =np&quot;) 结果为 'ytho'</code></td>
+</tr>
+<tr>
+<td>str.join(iter)</td>
+<td>在iter变量除最后一个元素外每个元素后增加一个str<br /><code>&quot;,&quot;.join(&quot;12345&quot;) 结果为 '1,2,3,4,5' #主要用于连接元素</code></td>
+</tr>
+</tbody>
+</table>
+<details class="note primary"><summary><p>一个特殊的字符串操作方法—字符串格式化方法</p>
+</summary>
+<p>字符串格式化使用.format()方法，用法为：&lt;带有{槽}的字符串&gt;.format(&lt;逗号分隔的参数&gt;)<br />
+{槽}内部对格式化的控制方式如下表：</p>
+<table>
+  <tr style="font-weight:bold">
+  	<td>参数序号</td>
+    <td>:</td>
+    <td>填充</td>
+    <td>对齐</td>
+    <td>宽度</td>
+    <td> , </td>
+    <td>.精度</td>
+    <td>数字类型</td>
+  </tr>
+  <tr>
+  	<td rowspan="2">可自定义，也可省略</td>
+    <td rowspan="2">引导符号</td>
+    <td>用于填充的单个字符</td></td>
+    <td width= "120"> < 左对齐 <br/>
+      > 右对齐 <br/>
+      ^ 居中对齐
+		</td>
+    <td>槽设定的输出宽度</td>
+    <td>千分位</td>
+    <td>浮点数小数位数或字符串最大输出长度</td>
+    <td>整数类型b,c,d,o,x,X<br/>
+      浮点数类型e,E,f,%
+		</td>
+  </tr>
+  <tr>
+    <td colspan="3">"{:=^20}".format("Python") 结果为 '=======Python======='</td>
+    <td colspan="3">"{:,.5f}".format(1234567.321) 结果为 '1,234,567.32100'</td>
+  </tr>
+</table>
+</details>
+<details class="note success"><summary><p>通过Time库练习数字类型和字符串类型的操作</p>
+</summary>
+<p>为了避免重复造轮子，Python和第三方封装了很多库供我们调用，其中time库是Python中处理时间的标准库。该库中的函数可以分成三种：</p>
+<table>
+<tr style="font-weight:bold">
+	<td>三种</td>
+	<td>函数</td>
+	<td>描述</td>
+</tr>
+<tr>
+	<td rowspan="6">时间获取</td>
+	<td>time()</td>
+  <td>获取当前时间戳，即计算机内部时间值，浮点数</br>
+  >>> time.time() 结果为 1611404718.4370959
+  </td>
+</tr>
+<tr>
+	<td>gmtime()</td>
+  <td>时间戳转为计算机可处理的时间格式，UTC时间，不传参则返回当前UTC时间</br>
+  >>> time.gmtime(1600017509.0) 结果为 time.struct_time(tm_year=2020, tm_mon=9, tm_mday=13, tm_hour=17, tm_min=18, tm_sec=29, tm_wday=6, tm_yday=257, tm_isdst=0)
+  </td>
+</tr>
+<tr>
+	<td>localtime()</td>
+  <td>时间戳转为计算机可处理的时间格式，local时间，不传参则返回当前local时间</br>
+  >>> time.localtime(1600017509.0) 结果为 time.struct_time(tm_year=2020, tm_mon=9, tm_mday=13, tm_hour=21, tm_min=18, tm_sec=29, tm_wday=6, tm_yday=257, tm_isdst=0)
+  </td>
+</tr>
+<tr>
+	<td>ctime()</td>
+  <td>时间戳转为人类可识别的时间字符串，不传参则返回当前本地时间</br>
+  >>> time.ctime() 结果为 'Sun Sep 13 21:18:29 2020'
+  </td>
+</tr>
+<tr>
+	<td>asctime()</td>
+  <td>将计算机可处理的时间格式转化为人类可识别的字符串</br>
+  >>> time.asctime(time.localtime())+"="+time.ctime() 结果为 'Sun Sep 13 21:18:29 2020=Sun Sep 13 21:18:29 2020'
+  </td>
+</tr>
+<tr>
+	<td>mktime()</td>
+  <td>将计算机可处理的时间格式转化为时间戳</br>
+  >>> time.mktime(time.localtime()) 结果为 1600017509.0
+  </td>
+</tr>
+<tr>
+	<td rowspan="2">时间格式化</td>
+	<td>strftime(format, t)</td>
+  <td>format是格式化模版字符串，用来自定义输出效果，t是计算机可处理时间格式</br>
+  >>> time.strftime("%Y-%m-%d") 结果为 '2020-09-13'
+  </td>
+</tr>
+<tr>
+	<td>strptime(string, format)</td>
+  <td>string是字符串形式的时间，format是格式化模版字符串用来定义输入效果</br>
+  >>> time.strptime("2020-09-13 12:12:12", "%Y-%m-%d %H:%M:%S") 结果为 time.struct_time(tm_year=2020, tm_mon=9, tm_mday=13, tm_hour=12, tm_min=12, tm_sec=12, tm_wday=6, tm_yday=257, tm_isdst=-1)
+  </td>
+</tr>
+<tr>
+	<td rowspan="2">程序计时</td>
+	<td>perf_counter()</td>
+  <td>返回一个CPU级别的精确时间计数值，单位为秒，由于这个计数值起点不确定，连续调用差值才有意义</br>
+  >>> start=time.perf_counter()</br>
+	>>> end=time.perf_counter()</br>
+	>>> end-start</br>
+	11.350346330999855
+  </td>
+</tr>
+<tr>
+	<td>sleep(s)</td>
+  <td>让程序休眠s秒，s可以是浮点数</br>
+	>>> def wait(s):<br/>
+...     start=time.perf_counter()<br/>
+...     time.sleep(s)<br/>
+...     end=time.perf_counter()<br/>
+...     print("休眠{:.2f}秒结束".format(s))<br/>
+	>>> wait(3)<br/>
+	休眠3.00秒结束
+  </td>
+</tr>
+</table>
+<p><strong>实例练习</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">scale = <span class="number">50</span></span><br><span class="line">start = time.perf_counter()</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;开始执行&#x27;</span>.center(scale//<span class="number">2</span>, <span class="string">&#x27;-&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(scale+<span class="number">1</span>):</span><br><span class="line">	a = <span class="string">&#x27;*&#x27;</span> * i</span><br><span class="line">	b = <span class="string">&#x27;.&#x27;</span> * (scale-i)</span><br><span class="line">	c = i/scale * <span class="number">100</span></span><br><span class="line">	end = time.perf_counter()</span><br><span class="line">	dur = end - start</span><br><span class="line">	print(<span class="string">&quot;\r&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;</span>.format(c, a, b, dur), end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">	time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;\n&#x27;</span>+<span class="string">&#x27;执行结束&#x27;</span>.center(scale//<span class="number">2</span>, <span class="string">&#x27;-&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</details>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Pony
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://ponysong3.github.io/2020/11/03/Python_Data_Type/" title="Python数据类型">https://ponysong3.github.io/2020/11/03/Python_Data_Type/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.sh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/%E6%95%B4%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 整数</a>
+              <a href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 浮点数</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
+              <a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 格式化</a>
+              <a href="/tags/%E8%BD%AC%E4%B9%89%E7%AC%A6/" rel="tag"><i class="fa fa-tag"></i> 转义符</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/15/soft-router/" rel="prev" title="软路由推荐型号">
+                  <i class="fa fa-chevron-left"></i> 软路由推荐型号
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/02/Python_Structure/" rel="next" title="Python程序结构">
+                  Python程序结构 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pony</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+
+  
+
+    </div>
+</body>
+</html>
