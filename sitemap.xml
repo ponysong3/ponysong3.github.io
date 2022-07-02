@@ -218,13 +218,6 @@
     
   </url>
   
-  <url>
-    <loc>https://ponysong3.github.io/2020/05/21/Economist/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>https://ponysong3.github.io/</loc>
@@ -243,34 +236,6 @@
   
   <url>
     <loc>https://ponysong3.github.io/tags/%E7%BA%A2%E7%83%A7%E9%B8%A1%E8%82%89%E7%82%96%E5%9C%9F%E8%B1%86/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ponysong3.github.io/tags/Economist/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ponysong3.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E4%BA%BA/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ponysong3.github.io/tags/English/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ponysong3.github.io/tags/%E8%8B%B1%E8%AF%AD/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1077,13 +1042,6 @@
   </url>
   
   <url>
-    <loc>https://ponysong3.github.io/categories/%E6%97%B6%E4%BA%8B/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://ponysong3.github.io/categories/%E9%87%91%E8%9E%8D/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
@@ -1106,6 +1064,13 @@
   
   <url>
     <loc>https://ponysong3.github.io/categories/Hexo/</loc>
+    <lastmod>2022-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ponysong3.github.io/categories/%E6%97%B6%E4%BA%8B/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
